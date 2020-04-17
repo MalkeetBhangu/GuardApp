@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -286,9 +287,13 @@ public class MainActivity extends AppCompatActivity {
                 call.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        if (checkPermission()) {
+                            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" +noo));
+                            startActivity(intent);
+                        }else {
+                            requestpermission();
+                        }
 
-                        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" +noo));
-                        startActivity(intent);
                     }
                 });
 
@@ -595,6 +600,13 @@ public class MainActivity extends AppCompatActivity {
         return times;
     }
 
+    private boolean checkPermission() {
+//        int result = ContextCompat.checkSelfPermission(getApplicationContext(), ACCESS_FINE_LOCATION);
+        int result1 = ContextCompat.checkSelfPermission(getApplicationContext(), CALL_PHONE);
+
+        return /*result == PackageManager.PERMISSION_GRANTED &&*/ result1 == PackageManager.PERMISSION_GRANTED;
+    }
+
     private void requestpermission() {
         ActivityCompat.requestPermissions(MainActivity.this, new String[]
                 {Manifest.permission.CALL_PHONE}, PERMISSION_REQUEST_CODE);
@@ -606,8 +618,8 @@ public class MainActivity extends AppCompatActivity {
                 if (grantResults.length > 0) {
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        if (shouldShowRequestPermissionRationale(ACCESS_FINE_LOCATION)) {
-                            showMessageOKCancel("You need to allow access to both the permissions",
+                        if (shouldShowRequestPermissionRationale(CALL_PHONE)) {
+                            showMessageOKCancel("You need to allow access the permissions",
                                     new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {

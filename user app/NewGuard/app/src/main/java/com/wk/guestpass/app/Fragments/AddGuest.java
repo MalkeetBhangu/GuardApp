@@ -28,6 +28,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.CursorLoader;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -92,9 +93,9 @@ public class AddGuest extends Fragment {
     private LinearLayout knowngust, unknwnguest;
     private EditText datess, timess, name, addrs, vpurpose;
     private IntlPhoneInput mobno;
-    private ImageView search, plus, minus, back, addcontct;
+    private ImageView search, plus, minus, back, ivAddContact;
     private TextView countguest, knwguest, unknwguest, shareQr;
-    final int PICK_CONTACT = 001;
+    private static final int PICK_CONTACT = 1;
     private int count = 1;
     private Button invite;
     private static final int PERMISSION_REQUEST_CODE = 200;
@@ -115,7 +116,7 @@ public class AddGuest extends Fragment {
         Fabric.with(getActivity(), new Crashlytics());
         View view = inflater.inflate(R.layout.fragaddguest, container, false);
         sessionManager = new SessionManager(getActivity());
-        // addcontct = view.findViewById(R.id.contact);
+        ivAddContact = view.findViewById(R.id.ivContact);
         mobno = view.findViewById(R.id.mobile);
         back = view.findViewById(R.id.back);
         search = view.findViewById(R.id.searchs);
@@ -333,7 +334,7 @@ public class AddGuest extends Fragment {
                     Toast toast = Toast.makeText(getActivity(), "Enter Mobile Number First!!!", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
-                }else if (!mobno.isValid()){
+                } else if (!mobno.isValid()) {
                     Toast toast = Toast.makeText(getActivity(), "Enter Valid Mobile Number!!!", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
@@ -363,13 +364,14 @@ public class AddGuest extends Fragment {
             }
         });
 
-       /* addcontct.setOnClickListener(new View.OnClickListener() {
+        ivAddContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+                intent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
                 startActivityForResult(intent, PICK_CONTACT);
             }
-        });*/
+        });
 
         knowngust.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -660,21 +662,18 @@ public class AddGuest extends Fragment {
             case (PICK_CONTACT):
                 if (resultCode == Activity.RESULT_OK) {
                     Uri contactData = data.getData();
-                    Cursor c = getActivity().getContentResolver().query(contactData, null, null, null, null);
-                    if (c.moveToFirst()) {
+                    CursorLoader cursorLoader = null;
+                    if (contactData != null) {
+                        cursorLoader = new CursorLoader(getActivity(),contactData,null,null,null,null);
+                    }
+                    Cursor cursor = null;
+                    if (cursorLoader != null) {
+                        cursor = cursorLoader.loadInBackground();
+                    }
+                    if (cursor != null && cursor.moveToFirst()) {
 
-                        String contactId = c.getString(c.getColumnIndex(ContactsContract.Contacts._ID));
-                        String hasNumber = c.getString(c.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
-
-                        if (Integer.valueOf(hasNumber) == 1) {
-                            Cursor numbers = getActivity().getContentResolver().
-                                    query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + contactId, null, null);
-                            while (numbers.moveToNext()) {
-                                number = numbers.getString(numbers.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-                                /*mobno.setText("" + number);*/
-                                mobno.setNumber("" + number);
-                            }
-                        }
+                        number = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+                        mobno.setNumber(number);
                     }
                 }
                 break;
