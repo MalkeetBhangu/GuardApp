@@ -41,7 +41,7 @@
             android:fontFamily="@font/ubuntu"
             android:layout_marginLeft="50dp"
             android:textColor="#fff"
-            android:text="Today's Guest"
+            android:text="@string/today_s_guest"
             android:textSize="20dp" />
 
         <android.support.v7.widget.SearchView

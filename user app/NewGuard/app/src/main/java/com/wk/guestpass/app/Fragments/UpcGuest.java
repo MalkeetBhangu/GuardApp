@@ -119,14 +119,14 @@ public class UpcGuest extends Fragment {
             public void onLongClick(View view, final int position) {
                 final String stat=list.get(position).getGueststatus();
                     android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getActivity());
-                    builder.setMessage("Are you sure you want to delete");
-                    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    builder.setMessage(R.string.delete_dialog);
+                    builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             deleteguest(list.get(position).getIds());
                             dialog.dismiss();
                         }
                     });
-                    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.dismiss();
                         }
@@ -167,15 +167,15 @@ public class UpcGuest extends Fragment {
                     @Override
                     public void onClick(View v) {
                         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getActivity());
-                        builder.setMessage("Are you sure you want to Logout");
-                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        builder.setMessage(R.string.logout_dialog_message);
+                        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 session.logoutUser();
                                 dialog.dismiss();
                                 getActivity().finish();
                             }
                         });
-                        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 dialog.dismiss();
                             }
@@ -213,7 +213,7 @@ public class UpcGuest extends Fragment {
     public void deleteguest(final String guestid) {
 
         final ProgressDialog showMe = new ProgressDialog(getActivity());
-        showMe.setMessage("Please wait");
+        showMe.setMessage(getString(R.string.please_wait));
         showMe.setCancelable(true);
         showMe.setCanceledOnTouchOutside(false);
         showMe.show();
@@ -239,7 +239,7 @@ public class UpcGuest extends Fragment {
                                         Toast.LENGTH_SHORT, true).show();
                             }
                         } catch (JSONException e) {
-                            Log.e("TAG", "Something Went Wrong");
+//                            Log.e("TAG", "Something Went Wrong");
                         }
                     }
                 },
@@ -319,7 +319,7 @@ public class UpcGuest extends Fragment {
                                 mainscreen.setVisibility(View.GONE);
                             }
                         } catch (JSONException e) {
-                            Log.e("TAG", "Something Went Wrong");
+//                            Log.e("TAG", "Something Went Wrong");
                         }
                         mainscreen.setVisibility(View.GONE);
                     }
@@ -394,7 +394,7 @@ public class UpcGuest extends Fragment {
         dsetime.setText(convrttime(model.getSettime()));
         dintime.setText(model.getIntime());
         dcntct.setText(model.getMobilenm());
-        dguest.setText(model.getTtlguest() + " GUEST");
+        dguest.setText(model.getTtlguest() + getString(R.string.guest));
         dpurpose.setText(model.getVstpurpse());
         if (model.getGuestrole().equals("1")) {
             guestroles.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_thumbup));

@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="@color/color_white"
     tools:context="com.wk.guestpass.app.Activities.SignUpActivity">
 
     <RelativeLayout
         android:id="@+id/homeimage"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="#30caa5">
+        android:background="@color/color_lightGreen30caa5">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#fff"
+            android:background="@color/color_white"
             android:paddingBottom="14dp">
 
 
@@ -43,7 +43,7 @@
                     android:fontFamily="@font/ubuntu"
                     android:layout_marginBottom="20dp"
                     android:text="@string/stext2"
-                    android:textColor="#fff"
+                    android:textColor="@color/color_white"
                     android:textSize="16sp" />
 
 
@@ -117,11 +117,11 @@
                                 android:layout_centerVertical="true"
                                 android:layout_marginRight="10dp"
                                 android:fontFamily="@font/ubuntu"
-                                android:hint="Ref-Code"
+                                android:hint="@string/ref_code"
                                 android:imeOptions="actionDone"
                                 android:paddingLeft="10dp"
                                 android:singleLine="true"
-                                android:textColorHint="#8b8b8b"
+                                android:textColorHint="@color/color_lightGray"
                                 android:textSize="14sp"
                                 android:theme="@style/EditText.Green" />
 
@@ -167,7 +167,7 @@
                             android:fontFamily="@font/ubuntu"
                             android:gravity="left"
                             android:paddingLeft="5dp"
-                            android:text="Text will be here"
+                            android:text="@string/text_will_be_here"
                             android:textSize="13sp" />
 
 
@@ -196,7 +196,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#fff"
+                    android:background="@color/color_white"
                     android:orientation="vertical">
 
 
@@ -218,11 +218,11 @@
                             android:drawableLeft="@drawable/ic_users1"
                             android:drawablePadding="10dp"
                             android:fontFamily="@font/ubuntu"
-                            android:hint="Name"
+                            android:hint="@string/name"
                             android:imeOptions="actionNext"
                             android:inputType="text"
                             android:singleLine="true"
-                            android:textColorHint="#8b8b8b"
+                            android:textColorHint="@color/color_lightGray"
                             android:textSize="14sp"
                             android:theme="@style/EditText.Green" />
 
@@ -247,11 +247,11 @@
                             android:drawableLeft="@drawable/ic_envelope"
                             android:drawablePadding="10dp"
                             android:fontFamily="@font/ubuntu"
-                            android:hint="Email"
+                            android:hint="@string/email"
                             android:imeOptions="actionNext"
                             android:inputType="textEmailAddress"
                             android:singleLine="true"
-                            android:textColorHint="#8b8b8b"
+                            android:textColorHint="@color/color_lightGray"
                             android:textSize="14sp"
                             android:theme="@style/EditText.Green" />
 
@@ -284,12 +284,12 @@
                             android:drawableLeft="@drawable/ic_phone_call"
                             android:drawablePadding="10dp"
                             android:fontFamily="@font/ubuntu"
-                            android:hint="Phone Number"
+                            android:hint="@string/phone_number"
                             android:imeOptions="actionNext"
                             android:inputType="number"
                             android:maxLength="12"
                             android:singleLine="true"
-                            android:textColorHint="#8b8b8b"
+                            android:textColorHint="@color/color_lightGray"
                             android:textSize="14sp"
                             android:theme="@style/EditText.Green" />
 
@@ -329,12 +329,12 @@
                                 android:drawableLeft="@drawable/ic_padlock"
                                 android:drawablePadding="10dp"
                                 android:fontFamily="@font/ubuntu"
-                                android:hint="Pin"
+                                android:hint="@string/pin"
                                 android:imeOptions="actionNext"
                                 android:inputType="numberPassword"
                                 android:maxLength="10"
                                 android:singleLine="true"
-                                android:textColorHint="#8b8b8b"
+                                android:textColorHint="@color/color_lightGray"
                                 android:textSize="14sp"
                                 android:theme="@style/EditText.Green" />
 
@@ -365,12 +365,12 @@
                                 android:drawableLeft="@drawable/ic_padlock"
                                 android:drawablePadding="10dp"
                                 android:fontFamily="@font/ubuntu"
-                                android:hint="Confirm Pin"
+                                android:hint="@string/confirm_pin"
                                 android:imeOptions="actionDone"
                                 android:inputType="numberPassword"
                                 android:maxLength="10"
                                 android:singleLine="true"
-                                android:textColorHint="#8b8b8b"
+                                android:textColorHint="@color/color_lightGray"
                                 android:textSize="14sp"
                                 android:theme="@style/EditText.Green" />
 
@@ -398,7 +398,7 @@
                     android:id="@+id/tc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:buttonTint="#31cca5" />
+                    android:buttonTint="@color/color_lightGreen30caa5" />
 
 
                 <TextView
@@ -434,7 +434,7 @@
                     android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:fontFamily="@font/ubuntu"
                     android:text="@string/stext2"
-                    android:textColor="#fff"
+                    android:textColor="@color/color_white"
                     android:textSize="18sp" />
 
 
@@ -459,9 +459,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_toRightOf="@+id/acc"
-                        android:text="@string/stext1"
+                        android:text="@string/login"
                         android:textAllCaps="true"
-                        android:textColor="#31cca5"
+                        android:textColor="@color/color_lightGreen30caa5"
                         android:textStyle="bold" />
 
                 </RelativeLayout>

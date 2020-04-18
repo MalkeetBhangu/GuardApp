@@ -121,12 +121,12 @@ public class LoginActivity extends AppCompatActivity {
         user1 = number.getText().toString();
         passd = pins.getText().toString();
         if (user1.equals("")) {
-            Toast toast=Toast.makeText(this, "Please Enter Mobile No.", Toast.LENGTH_SHORT);
+            Toast toast=Toast.makeText(this, R.string.please_enter_mobile_number, Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER,0,0);
             toast.show();
             return;
         } else if (passd.equals("")) {
-            Toast toast=Toast.makeText(this, "Please Enter Password", Toast.LENGTH_SHORT);
+            Toast toast=Toast.makeText(this, R.string.please_enter_password, Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER,0,0);
             toast.show();
             return;
@@ -178,7 +178,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onErrorResponse(VolleyError error) {
                             //showMe.dismiss();
                             mainscreen.setVisibility(View.GONE);
-                            Toast toast=Toast.makeText(getApplicationContext(),"Network Error",Toast.LENGTH_SHORT);
+                            Toast toast=Toast.makeText(getApplicationContext(),R.string.network_error,Toast.LENGTH_SHORT);
                             toast.setGravity(Gravity.CENTER,0,0);
                             toast.show();
                         }

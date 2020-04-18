@@ -32,7 +32,7 @@
 
         <RelativeLayout
             android:id="@+id/header"
-            android:background="#31cca5"
+            android:background="@color/color_lightGreen31cca5"
             android:layout_width="match_parent"
             android:layout_height="160dp">
 
@@ -91,7 +91,7 @@
                         android:layout_gravity="center"
                         android:fontFamily="@font/poppins_light"
                         android:textSize="13sp"
-                        android:textColor="#fff"/>
+                        android:textColor="@color/color_white"/>
 
                     <TextView
                         android:id="@+id/apartment"
@@ -103,7 +103,7 @@
                         android:textSize="13sp"
                         android:layout_marginLeft="10dp"
                         android:text="@string/drtext3"
-                        android:textColor="#fff"/>
+                        android:textColor="@color/color_white"/>
 
                 </LinearLayout>
 
@@ -128,7 +128,7 @@
                 android:drawablePadding="30dp"
                 android:fontFamily="@font/poppins"
                 android:drawableLeft="@drawable/ic_headset"
-                android:textColor="#221f20"
+                android:textColor="@color/color_black221f20"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -140,7 +140,7 @@
                 android:drawablePadding="30dp"
                 android:fontFamily="@font/poppins"
                 android:drawableLeft="@drawable/ic_information"
-                android:textColor="#221f20"
+                android:textColor="@color/color_black221f20"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -152,7 +152,7 @@
                 android:drawablePadding="30dp"
                 android:fontFamily="@font/poppins"
                 android:drawableLeft="@drawable/ic_logouts"
-                android:textColor="#221f20"
+                android:textColor="@color/color_black221f20"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -170,7 +170,7 @@
 
 
             <TextView
-                android:textColor="#7f6b64"
+                android:textColor="@color/color_lightBron7f6b64"
                 android:text="@string/drtext7"
                 android:fontFamily="@font/poppins_semibold"
                 android:layout_width="wrap_content"
@@ -178,7 +178,7 @@
 
             <TextView
                 android:id="@+id/propcode"
-                android:textColor="#a54686"
+                android:textColor="@color/color_pinka54686"
                 android:text="AXS0001"
                 android:layout_marginLeft="10dp"
                 android:fontFamily="@font/poppins_semibold"
@@ -218,7 +218,7 @@
                 android:includeFontPadding="false"
                 android:layout_marginTop="5dp"
                 android:text="@string/drtext5"
-                android:textColor="#fff"/>
+                android:textColor="@color/color_white"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -228,7 +228,7 @@
                 android:fontFamily="@font/poppins"
                 android:textSize="11sp"
                 android:text="@string/drtext6"
-                android:textColor="#fff"/>
+                android:textColor="@color/color_white"/>
 
         </LinearLayout>
 

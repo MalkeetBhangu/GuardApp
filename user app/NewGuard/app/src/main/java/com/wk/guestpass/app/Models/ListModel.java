@@ -13,6 +13,16 @@ public class ListModel {
     public String mobilenm,ttlguest,guestrole,gueststatus;
     public String datess,settime,intime,checkin;
 
+    public String getRequestCode() {
+        return requestCode;
+    }
+
+    public void setRequestCode(String requestCode) {
+        this.requestCode = requestCode;
+    }
+
+    public String requestCode;
+
 
     public String getVstpurpse() {
         return vstpurpse;

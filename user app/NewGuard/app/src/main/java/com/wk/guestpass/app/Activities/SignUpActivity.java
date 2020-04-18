@@ -150,12 +150,12 @@ public class SignUpActivity extends AppCompatActivity {
 
         if (mySpinner.getSelectedItem().toString().equals("Select Flats")){
 
-            Toast toast = Toast.makeText(SignUpActivity.this, "Select Flat First!!!", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(SignUpActivity.this, R.string.select_flag_first, Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
         }
         else if(name.getText().toString().equals("")){
-            Toast toast = Toast.makeText(SignUpActivity.this, "Enter Name First!!!", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(SignUpActivity.this, R.string.enter_name_first, Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
         }
@@ -165,33 +165,33 @@ public class SignUpActivity extends AppCompatActivity {
             toast.show();
         }
         else if(number.getText().toString().equals("")){
-            Toast toast = Toast.makeText(SignUpActivity.this, "Enter Mobile Number First!!!", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(SignUpActivity.this, R.string.enter_mobile_number, Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
         }
         else if(number.getText().toString().length()<9){
-            Toast toast = Toast.makeText(SignUpActivity.this, "Enter Valid Mobile Number First!!!", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(SignUpActivity.this, R.string.enter_valid_mobile_number, Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
         }
         else if(pin.getText().toString().equals("")){
-            Toast toast = Toast.makeText(SignUpActivity.this, "Enter Pin First!!!", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(SignUpActivity.this, R.string.enter_pin_first, Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
         }
         else if(cpin.getText().toString().equals("")){
-            Toast toast = Toast.makeText(SignUpActivity.this, "Enter Confirm Pin First!!!", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(SignUpActivity.this, R.string.enter_confirm_pin_first, Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
         }
         else if(!pin.getText().toString().equals(cpin.getText().toString())){
-            Toast toast = Toast.makeText(SignUpActivity.this, "Pins are not Matching!!!", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(SignUpActivity.this, R.string.pin_are_not_matching, Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
 
         }else if(!accept.isChecked()){
 
-            Toast toast = Toast.makeText(SignUpActivity.this, "Please Accept Terms & Conditions!!!", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(SignUpActivity.this, R.string.please_accept_term_and_conditions, Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
         }
@@ -204,7 +204,7 @@ public class SignUpActivity extends AppCompatActivity {
     public void checkrefcode(final String refcodess) {
 
         final ProgressDialog showMe = new ProgressDialog(SignUpActivity.this);
-        showMe.setMessage("Please wait");
+        showMe.setMessage(getString(R.string.please_wait));
         showMe.setCancelable(true);
         showMe.setCanceledOnTouchOutside(false);
         showMe.show();
@@ -265,7 +265,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 }, 2000);
                             }
                         } catch (JSONException e) {
-                            Log.e("TAG", "Something Went Wrong");
+//                            Log.e("TAG", "Something Went Wrong");
                         }
                     }
                 },
@@ -304,7 +304,7 @@ public class SignUpActivity extends AppCompatActivity {
         final String cpass = cpin.getText().toString();
 
         final ProgressDialog showMe = new ProgressDialog(SignUpActivity.this);
-        showMe.setMessage("Please wait");
+        showMe.setMessage(getString(R.string.please_wait));
         showMe.setCancelable(true);
         showMe.setCanceledOnTouchOutside(false);
         showMe.show();
@@ -324,7 +324,7 @@ public class SignUpActivity extends AppCompatActivity {
                             String status = j.getString("status");
                             if (status.equals("1")) {
 
-                                Toast toast = Toast.makeText(getApplicationContext(), "Sign Up Successfull You can Login Now!!!", Toast.LENGTH_SHORT);
+                                Toast toast = Toast.makeText(getApplicationContext(), R.string.sign_up_successful_you_can_login, Toast.LENGTH_SHORT);
                                 toast.setGravity(Gravity.CENTER, 0, 0);
                                 toast.show();
                                 finish();
@@ -335,7 +335,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 Toast.makeText(SignUpActivity.this, failed, Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
-                            Log.e("TAG", "Something Went Wrong");
+//                            Log.e("TAG", "Something Went Wrong");
                             Toast.makeText(SignUpActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
                         }
                     }

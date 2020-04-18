@@ -228,15 +228,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(MainActivity.this);
-                builder.setMessage("Are you sure you want to Logout");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                builder.setMessage(R.string.logout_dialog_message);
+                builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         session.logoutUser();
                         dialog.dismiss();
                         finish();
                     }
                 });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
                     }
@@ -250,15 +250,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(MainActivity.this);
-                builder.setMessage("Are you sure you want to Logout");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                builder.setMessage(R.string.logout_dialog_message);
+                builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         session.logoutUser();
                         dialog.dismiss();
                         finish();
                     }
                 });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
                     }
@@ -452,7 +452,7 @@ public class MainActivity extends AppCompatActivity {
                             nodata.setVisibility(View.VISIBLE);
                             mRecyclerView.setVisibility(View.GONE);
                            // mainscreen.setVisibility(View.GONE);
-                            Log.e("TAG", "Something Went Wrong");
+//                            Log.e("TAG", "Something Went Wrong");
                         }
                           mainscreen.setVisibility(View.GONE);
                     }
@@ -619,7 +619,7 @@ public class MainActivity extends AppCompatActivity {
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         if (shouldShowRequestPermissionRationale(CALL_PHONE)) {
-                            showMessageOKCancel("You need to allow access the permissions",
+                            showMessageOKCancel(getString(R.string.you_need_to_allow_access_the_permission),
                                     new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
@@ -641,8 +641,8 @@ public class MainActivity extends AppCompatActivity {
     private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
         new AlertDialog.Builder(MainActivity.this)
                 .setMessage(message)
-                .setPositiveButton("OK", okListener)
-                .setNegativeButton("Cancel", null)
+                .setPositiveButton(R.string.ok, okListener)
+                .setNegativeButton(R.string.cancel, null)
                 .create()
                 .show();
     }

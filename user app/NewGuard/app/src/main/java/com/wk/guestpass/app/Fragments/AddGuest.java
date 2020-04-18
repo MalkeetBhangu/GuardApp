@@ -178,18 +178,18 @@ public class AddGuest extends Fragment {
                                 String role = j.getString("guest role");
                                 if (role.equals("1")) {
                                     //  knwguest.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_thumbup,0,0,0);
-                                    knwguest.setTextColor(Color.parseColor("#0d7cd1"));
+                                    knwguest.setTextColor(getResources().getColor(R.color.color_blue));
                                     knwguest.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
                                     //  unknwguest.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_thumbdown,0,0,0);
-                                    unknwguest.setTextColor(Color.parseColor("#8b8b8b"));
+                                    unknwguest.setTextColor(getResources().getColor(R.color.color_lightGray));
                                     unknwguest.setTypeface(Typeface.DEFAULT);
                                     guestrole = "1";
                                 } else if (role.equals("2")) {
                                     //   knwguest.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_thumbdown,0,0,0);
-                                    knwguest.setTextColor(Color.parseColor("#8b8b8b"));
+                                    knwguest.setTextColor(getResources().getColor(R.color.color_lightGray));
                                     knwguest.setTypeface(Typeface.DEFAULT);
                                     //   unknwguest.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_thumbup,0,0,0);
-                                    unknwguest.setTextColor(Color.parseColor("#0d7cd1"));
+                                    unknwguest.setTextColor(getResources().getColor(R.color.color_blue));
                                     unknwguest.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
                                     guestrole = "2";
                                 }
@@ -210,8 +210,8 @@ public class AddGuest extends Fragment {
                             } else {
                                 //Toasty.info(getActivity(), ""+j.getString("messege"), Toast.LENGTH_SHORT, true).show();
                                 final SweetAlertDialog ew = new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE);
-                                ew.setTitleText("OOPS! No Data Found");
-                                ew.setContentText("You Can Add Newone!!!!");
+                                ew.setTitleText(getString(R.string.opps_no_data_found));
+                                ew.setContentText(getString(R.string.you_can_add_newone));
                                 ew.show();
                                 new Handler().postDelayed(new Runnable() {
                                     public void run() {
@@ -220,7 +220,7 @@ public class AddGuest extends Fragment {
                                 }, 2000);
                             }
                         } catch (JSONException e) {
-                            Log.e("TAG", "Something Went Wrong");
+//                            Log.e("TAG", "Something Went Wrong");
                         }
                     }
                 },
@@ -279,7 +279,7 @@ public class AddGuest extends Fragment {
                                 QrcodeDialog("" + respnse, mobile);
                             }
                         } catch (JSONException e) {
-                            Log.e("TAG", "Something Went Wrong");
+//                            Log.e("TAG", "Something Went Wrong");
                         }
                     }
                 },
@@ -331,31 +331,27 @@ public class AddGuest extends Fragment {
             public void onClick(View v) {
                 /*if (mobno.getText().toString().equals("")) {*/
                 if (mobno.getText() == null) {
-                    Toast toast = Toast.makeText(getActivity(), "Enter Mobile Number First!!!", Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.CENTER, 0, 0);
-                    toast.show();
-                } else if (!mobno.isValid()) {
-                    Toast toast = Toast.makeText(getActivity(), "Enter Valid Mobile Number!!!", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(), R.string.enter_mobile_number, Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 } else if (datess.getText().toString().equals("")) {
-                    Toast toast = Toast.makeText(getActivity(), "Date Is Missing!!", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(), R.string.date_is_missing, Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 } else if (timess.getText().toString().equals("")) {
-                    Toast toast = Toast.makeText(getActivity(), "Time Is Important!!", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(), R.string.time_is_important, Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 } else if (name.getText().toString().equals("")) {
-                    Toast toast = Toast.makeText(getActivity(), "Name Is Remaining!!", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(), R.string.name_is_remaining, Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 } else if (addrs.getText().toString().equals("")) {
-                    Toast toast = Toast.makeText(getActivity(), "Can't Find You Without Address!!", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(), R.string.cannot_find_you_without_address, Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 } else if (vpurpose.getText().toString().equals("")) {
-                    Toast toast = Toast.makeText(getActivity(), "Visit Purpose Is Must Important!!", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(), R.string.visit_purpose_is_most_important, Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 } else {
@@ -377,11 +373,11 @@ public class AddGuest extends Fragment {
             @Override
             public void onClick(View v) {
                 //  knwguest.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_thumbup,0,0,0);
-                knwguest.setTextColor(Color.parseColor("#0d7cd1"));
+                knwguest.setTextColor(getResources().getColor(R.color.color_blue));
                 knwguest.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
                 knwguest.setTextSize(15);
                 //  unknwguest.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_thumbdown,0,0,0);
-                unknwguest.setTextColor(Color.parseColor("#8b8b8b"));
+                unknwguest.setTextColor(getResources().getColor(R.color.color_lightGray));
                 unknwguest.setTypeface(Typeface.DEFAULT);
                 unknwguest.setTextSize(13);
                 guestrole = "1";
@@ -391,11 +387,11 @@ public class AddGuest extends Fragment {
             @Override
             public void onClick(View v) {
                 //  knwguest.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_thumbdown,0,0,0);
-                knwguest.setTextColor(Color.parseColor("#8b8b8b"));
+                knwguest.setTextColor(getResources().getColor(R.color.color_lightGray));
                 knwguest.setTypeface(Typeface.DEFAULT);
                 knwguest.setTextSize(13);
                 //  unknwguest.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_thumbup,0,0,0);
-                unknwguest.setTextColor(Color.parseColor("#0d7cd1"));
+                unknwguest.setTextColor(getResources().getColor(R.color.color_blue));
                 unknwguest.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
                 unknwguest.setTextSize(15);
                 guestrole = "2";
@@ -407,17 +403,18 @@ public class AddGuest extends Fragment {
             public void onClick(View v) {
                 /*if(mobno.getText().toString().equals("")){*/
                 if (mobno.getText() == null) {
-                    Toast toast = Toast.makeText(getActivity(), "Enter Mobile Number First!!!", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(), R.string.enter_mobile_number, Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 } else {
-                    if (mobno.isValid()) {
+                    checkguest(mobno.getText().toString());
+                   /* if (mobno.isValid()) {
                         checkguest(mobno.getText().toString());
                     } else {
                         Toast toast = Toast.makeText(getActivity(), "Enter Valid Mobile Number", Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
-                    }
+                    }*/
 
                 }
             }
@@ -505,7 +502,7 @@ public class AddGuest extends Fragment {
     private void shareImageUri(Uri uri) {
         Intent intent = new Intent(android.content.Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_STREAM, uri);
-        intent.putExtra(Intent.EXTRA_TEXT, "This Is your Guestpass Qr code, kindly save it to get access in property, And your code is: " + codes);
+        intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.guestPass_Qr_code) + codes);
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         intent.setType("image/*");
         startActivity(Intent.createChooser(intent, "Share QRCode!"));
@@ -532,7 +529,7 @@ public class AddGuest extends Fragment {
             }
 
         } catch (IOException e) {
-            Log.d(TAG, "IOException while trying to write file for sharing: " + e.getMessage());
+//            Log.d(TAG, "IOException while trying to write file for sharing: " + e.getMessage());
         }
         return uri;
     }

@@ -3,20 +3,30 @@ package com.wk.guestpass.app.Fragments;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -31,6 +41,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.zxing.WriterException;
 import com.wk.guestpass.app.FragAdapters.TodaysGuestAdapter;
 import com.wk.guestpass.app.Models.ListModel;
 import com.wk.guestpass.app.R;
@@ -43,7 +54,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import com.crashlytics.android.Crashlytics;
+
+import androidmads.library.qrgenearator.QRGContents;
+import androidmads.library.qrgenearator.QRGEncoder;
 import io.fabric.sdk.android.Fabric;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -55,11 +73,13 @@ import java.util.Map;
 import es.dmoral.toasty.Toasty;
 import pl.droidsonroids.gif.GifImageView;
 
+import static android.content.Context.WINDOW_SERVICE;
+
 public class TodaysGuest extends Fragment {
 
     private RecyclerView recyclerView;
     private SessionManager session;
-    private String usersssid, userna;
+    private String usersssid, userna,codes;
     private TextView dname, ddate, dsetime, dintime, dcntct, dguest, dpurpose;
     private TodaysGuestAdapter todaysGuestAdapter;
     SwipeRefreshLayout mSwipeRefreshLayout;
@@ -74,6 +94,7 @@ public class TodaysGuest extends Fragment {
     public CubeGrid cubeGrid;
     private SearchView searchView;
     public RelativeLayout mainscreen,bgrnd;
+    private Button btnShareCode;
 
     @Nullable
     @Override
@@ -119,15 +140,15 @@ public class TodaysGuest extends Fragment {
                 final String stat=list.get(position).getGueststatus();
                 if(stat.equals("0")){
                     android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getActivity());
-                    builder.setMessage("Are you sure you want to delete");
-                    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    builder.setMessage(getString(R.string.delete_dialog));
+                    builder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
 
                             deleteguest(list.get(position).getIds());
                             dialog.dismiss();
                         }
                     });
-                    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.dismiss();
                         }
@@ -136,7 +157,7 @@ public class TodaysGuest extends Fragment {
                     alertDialog.show();
                 }
                 else{
-                    Toasty.error(getActivity(), "Sorry!!! Data Can't be Deleted", Toast.LENGTH_SHORT, true).show();
+                    Toasty.error(getActivity(), R.string.data_not_delete, Toast.LENGTH_SHORT, true).show();
                 }
             }
         }));
@@ -171,15 +192,15 @@ public class TodaysGuest extends Fragment {
                     @Override
                     public void onClick(View v) {
                         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getActivity());
-                        builder.setMessage("Are you sure you want to Logout");
-                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        builder.setMessage(R.string.logout_dialog_message);
+                        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 session.logoutUser();
                                 dialog.dismiss();
                                 getActivity().finish();
                             }
                         });
-                        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 dialog.dismiss();
                             }
@@ -218,7 +239,7 @@ public class TodaysGuest extends Fragment {
     public void deleteguest(final String guestid) {
 
         final ProgressDialog showMe = new ProgressDialog(getActivity());
-        showMe.setMessage("Please wait");
+        showMe.setMessage(getString(R.string.please_wait));
         showMe.setCancelable(true);
         showMe.setCanceledOnTouchOutside(false);
         showMe.show();
@@ -310,6 +331,7 @@ public class TodaysGuest extends Fragment {
                                         model.setSettime(getOne.getString("visit_time"));
                                         model.setIntime(getOne.getString("checkin_time"));
                                         model.setTtlguest(getOne.getString("total_guest"));
+                                        model.setRequestCode("1234");
 
                                         list.add(model);
                                         todaysGuestAdapter = new TodaysGuestAdapter(getActivity(), list);
@@ -393,15 +415,16 @@ public class TodaysGuest extends Fragment {
         dpurpose = bottomSheetDialog.findViewById(R.id.visitpurpose);
         guestroles = bottomSheetDialog.findViewById(R.id.guestrole);
         expstmp = bottomSheetDialog.findViewById(R.id.expstmp);
+        btnShareCode = bottomSheetDialog.findViewById(R.id.btnShare);
 
-        ListModel model = list.get(posy);
+        final ListModel model = list.get(posy);
 
         dname.setText(model.getNames().substring(0, 1).toUpperCase() + model.getNames().substring(1));
         ddate.setText(model.getDatess());
         dsetime.setText(convrttime(model.getSettime()));
         dintime.setText(model.getIntime());
         dcntct.setText(model.getMobilenm());
-        dguest.setText(model.getTtlguest() + " GUEST");
+        dguest.setText(model.getTtlguest() + getString(R.string.guest));
         dpurpose.setText(model.getVstpurpse());
 
         if (model.getGuestrole().equals("1")) {
@@ -418,6 +441,13 @@ public class TodaysGuest extends Fragment {
                 bottomSheetDialog.dismiss();
             }
         });*/
+
+       btnShareCode.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               qrCodeDialog(model.getRequestCode());
+           }
+       });
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -442,5 +472,97 @@ public class TodaysGuest extends Fragment {
         return times;
     }
 
+    private void qrCodeDialog(final String code) {
+        bottomSheetDialog = new BottomSheetDialog(getActivity());
+        bottomSheetDialog.setContentView(R.layout.qr_code);
+        bottomSheetDialog.setCanceledOnTouchOutside(false);
+        bottomSheetDialog.setCancelable(false);
 
+
+        final ImageView qrview, qrbck;
+        TextView shareQr, txtcode, sendsms;
+        qrview = bottomSheetDialog.findViewById(R.id.qrcodeicon);
+        txtcode = bottomSheetDialog.findViewById(R.id.codetxt);
+        shareQr = bottomSheetDialog.findViewById(R.id.Share);
+        qrbck = bottomSheetDialog.findViewById(R.id.qrback);
+
+        WindowManager manager = (WindowManager) getActivity().getSystemService(WINDOW_SERVICE);
+        Display display = manager.getDefaultDisplay();
+        Point point = new Point();
+        display.getSize(point);
+        int width = point.x;
+        int height = point.y;
+        int smallerDimension = width < height ? width : height;
+        smallerDimension = smallerDimension * 2 / 4;
+
+        qrbck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomSheetDialog.dismiss();
+                Intent intent = getActivity().getIntent();
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                getActivity().finish();
+                startActivity(intent);
+                //   getFragmentManager().popBackStack();
+                // mn.HomedataList();
+            }
+        });
+
+        QRGEncoder qrgEncoder = new QRGEncoder(code, null, QRGContents.Type.TEXT, smallerDimension);
+        try {
+            Bitmap bitmap = qrgEncoder.encodeAsBitmap();
+            qrview.setImageBitmap(bitmap);
+            txtcode.setText("" + code);
+            codes = code;
+        } catch (WriterException e) {
+            Log.v(TAG, e.toString());
+        }
+
+        shareQr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                qrview.invalidate();
+                Bitmap bitmap = ((BitmapDrawable) qrview.getDrawable()).getBitmap();
+                shareImageUri(saveImage(bitmap, code));
+            }
+        });
+
+        bottomSheetDialog.show();
+    }
+
+    private void shareImageUri(Uri uri) {
+        Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_STREAM, uri);
+        intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.guestPass_Qr_code) + codes);
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        intent.setType("image/*");
+        startActivity(Intent.createChooser(intent, "Share QRCode!"));
+    }
+
+    private Uri saveImage(Bitmap image, String code) {
+        //TODO - Should be processed in another thread
+        File imagesFolder = new File(getActivity().getCacheDir(), "images");
+        Uri uri = null;
+        try {
+            imagesFolder.mkdirs();
+            File file = new File(imagesFolder, code + "_image.png");
+
+            FileOutputStream stream = new FileOutputStream(file);
+            image.compress(Bitmap.CompressFormat.PNG, 90, stream);
+            stream.flush();
+            stream.close();
+
+            if ((Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT)) {
+                uri = FileProvider.getUriForFile(getActivity(),
+                        "com.example.abc.newguard", file);
+            } else {
+                uri = Uri.fromFile(file);
+            }
+
+        } catch (IOException e) {
+//            Log.d(TAG, "IOException while trying to write file for sharing: " + e.getMessage());
+        }
+        return uri;
+    }
 }

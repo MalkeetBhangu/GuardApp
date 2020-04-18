@@ -48,7 +48,7 @@ public class SplashActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.parseColor("#2AB594"));
+            window.setStatusBarColor(getResources().getColor(R.color.color_lightGreen2AB594));
         }
 
         imageView=findViewById(R.id.imageView);
@@ -102,7 +102,7 @@ public class SplashActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast toast = Toast.makeText(getApplicationContext(), "Network Error", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(getApplicationContext(), R.string.network_error, Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
                         finish();

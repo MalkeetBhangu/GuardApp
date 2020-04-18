@@ -58,7 +58,7 @@
         android:paddingTop="6sp"
         android:textStyle="bold"
         android:paddingBottom="6sp"
-        android:textColor="#000" />
+        android:textColor="@color/color_black" />
 
     <ImageView
         android:id="@+id/qrcodeicon"
@@ -90,7 +90,7 @@
             android:layout_height="wrap_content"
             android:text="SHARE"
             android:layout_gravity="center_vertical"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/color_white"
             android:textSize="18dp"
             android:fontFamily="@font/ubuntu"
             android:drawableLeft="@drawable/ic_share_black_24dp"
