@@ -277,6 +277,7 @@
         </LinearLayout>
     </LinearLayout>
 
+
     <LinearLayout
         android:id="@+id/linear6"
         android:layout_width="match_parent"
@@ -285,12 +286,37 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="25dp"
-        android:weightSum="2"
-        android:orientation="horizontal">
+        android:layout_marginBottom="25dp">
 
         <Button
             android:id="@+id/backs"
+            android:elevation="3dp"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@drawable/btnborder1"
+            android:fontFamily="@font/roboto_medium"
+            android:text="BACK"
+            android:textColor="#FFFFFF"
+            android:textSize="16dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linear7"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/linear6"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="25dp"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/btnBacks"
             android:elevation="3dp"
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:layout_width="0dp"

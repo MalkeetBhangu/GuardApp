@@ -3,22 +3,33 @@ package com.wk.guestpass.app.Fragments;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -31,6 +42,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.zxing.WriterException;
 import com.wk.guestpass.app.FragAdapters.UpcGuestAdapter;
 import com.wk.guestpass.app.Models.ListModel;
 import com.wk.guestpass.app.R;
@@ -43,6 +55,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -51,14 +66,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import com.crashlytics.android.Crashlytics;
+
+import androidmads.library.qrgenearator.QRGContents;
+import androidmads.library.qrgenearator.QRGEncoder;
 import io.fabric.sdk.android.Fabric;
 import es.dmoral.toasty.Toasty;
 import pl.droidsonroids.gif.GifImageView;
 
+import static android.content.Context.WINDOW_SERVICE;
+
 public class UpcGuest extends Fragment {
 
     private SessionManager session;
-    private String usersssid;
+    private String usersssid,codes;
     private RecyclerView recyclerView;
     private UpcGuestAdapter upcGuestAdapter;
     SwipeRefreshLayout mSwipeRefreshLayout;
@@ -304,6 +324,7 @@ public class UpcGuest extends Fragment {
                                         model.setGuestrole(getOne.getString("guest_role"));
                                         model.setSettime(getOne.getString("visit_time"));
                                         model.setTtlguest(getOne.getString("total_guest"));
+                                        model.setRequestCode("1234");
 
                                         list.add(model);
                                         upcGuestAdapter = new UpcGuestAdapter(getActivity(), list);
@@ -376,7 +397,8 @@ public class UpcGuest extends Fragment {
 
        // ImageView cancel = bottomSheetDialog.findViewById(R.id.cancel);
         Button back = bottomSheetDialog.findViewById(R.id.backs);
-
+        Button btnBack = bottomSheetDialog.findViewById(R.id.btnBacks);
+        Button btnShareCode = bottomSheetDialog.findViewById(R.id.btnShare);
         dname = bottomSheetDialog.findViewById(R.id.detailname);
         ddate = bottomSheetDialog.findViewById(R.id.detaildate);
         dsetime = bottomSheetDialog.findViewById(R.id.settime);
@@ -386,8 +408,13 @@ public class UpcGuest extends Fragment {
         dpurpose = bottomSheetDialog.findViewById(R.id.visitpurpose);
         guestroles = bottomSheetDialog.findViewById(R.id.guestrole);
         expstmp = bottomSheetDialog.findViewById(R.id.expstmp);
+        LinearLayout ll_back = bottomSheetDialog.findViewById(R.id.linear6);
+        LinearLayout ll_backOrShare = bottomSheetDialog.findViewById(R.id.linear7);
 
-        ListModel model = list.get(posy);
+        ll_back.setVisibility(View.GONE);
+        ll_backOrShare.setVisibility(View.VISIBLE);
+
+        final ListModel model = list.get(posy);
 
         dname.setText(model.getNames().substring(0, 1).toUpperCase() + model.getNames().substring(1));
         ddate.setText(model.getDatess());
@@ -409,7 +436,14 @@ public class UpcGuest extends Fragment {
             }
         });*/
 
-        back.setOnClickListener(new View.OnClickListener() {
+        btnShareCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                qrCodeDialog(model.getRequestCode());
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 bottomSheetDialog.dismiss();
@@ -431,5 +465,99 @@ public class UpcGuest extends Fragment {
         } catch (ParseException e) {
         }
         return times;
+    }
+
+    private void qrCodeDialog(final String code) {
+        final Dialog bottomSheetDialog = new BottomSheetDialog(getActivity());
+        bottomSheetDialog.setContentView(R.layout.qr_code);
+        bottomSheetDialog.setCanceledOnTouchOutside(false);
+        bottomSheetDialog.setCancelable(false);
+
+
+        final ImageView qrview, qrbck;
+        TextView shareQr, txtcode, sendsms;
+        qrview = bottomSheetDialog.findViewById(R.id.qrcodeicon);
+        txtcode = bottomSheetDialog.findViewById(R.id.codetxt);
+        shareQr = bottomSheetDialog.findViewById(R.id.Share);
+        qrbck = bottomSheetDialog.findViewById(R.id.qrback);
+
+        WindowManager manager = (WindowManager) getActivity().getSystemService(WINDOW_SERVICE);
+        Display display = manager.getDefaultDisplay();
+        Point point = new Point();
+        display.getSize(point);
+        int width = point.x;
+        int height = point.y;
+        int smallerDimension = width < height ? width : height;
+        smallerDimension = smallerDimension * 2 / 4;
+
+        qrbck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomSheetDialog.dismiss();
+                /*Intent intent = getActivity().getIntent();
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                getActivity().finish();
+                startActivity(intent);*/
+                //   getFragmentManager().popBackStack();
+                // mn.HomedataList();
+            }
+        });
+
+        QRGEncoder qrgEncoder = new QRGEncoder(code, null, QRGContents.Type.TEXT, smallerDimension);
+        try {
+            Bitmap bitmap = qrgEncoder.encodeAsBitmap();
+            qrview.setImageBitmap(bitmap);
+            txtcode.setText("" + code);
+            codes = code;
+        } catch (WriterException e) {
+            Log.v(TAG, e.toString());
+        }
+
+        shareQr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                qrview.invalidate();
+                Bitmap bitmap = ((BitmapDrawable) qrview.getDrawable()).getBitmap();
+                shareImageUri(saveImage(bitmap, code));
+            }
+        });
+
+        bottomSheetDialog.show();
+    }
+
+    private void shareImageUri(Uri uri) {
+        Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_STREAM, uri);
+        intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.guestPass_Qr_code) + codes);
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        intent.setType("image/*");
+        startActivity(Intent.createChooser(intent, "Share QRCode!"));
+    }
+
+    private Uri saveImage(Bitmap image, String code) {
+        //TODO - Should be processed in another thread
+        File imagesFolder = new File(getActivity().getCacheDir(), "images");
+        Uri uri = null;
+        try {
+            imagesFolder.mkdirs();
+            File file = new File(imagesFolder, code + "_image.png");
+
+            FileOutputStream stream = new FileOutputStream(file);
+            image.compress(Bitmap.CompressFormat.PNG, 90, stream);
+            stream.flush();
+            stream.close();
+
+            if ((Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT)) {
+                uri = FileProvider.getUriForFile(getActivity(),
+                        "com.example.abc.newguard", file);
+            } else {
+                uri = Uri.fromFile(file);
+            }
+
+        } catch (IOException e) {
+//            Log.d(TAG, "IOException while trying to write file for sharing: " + e.getMessage());
+        }
+        return uri;
     }
 }

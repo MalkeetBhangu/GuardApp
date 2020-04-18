@@ -29,6 +29,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -405,6 +406,7 @@ public class TodaysGuest extends Fragment {
 
        // ImageView cancel = bottomSheetDialog.findViewById(R.id.cancel);
         Button back = bottomSheetDialog.findViewById(R.id.backs);
+        Button btnBack = bottomSheetDialog.findViewById(R.id.btnBacks);
 
         dname = bottomSheetDialog.findViewById(R.id.detailname);
         ddate = bottomSheetDialog.findViewById(R.id.detaildate);
@@ -416,6 +418,11 @@ public class TodaysGuest extends Fragment {
         guestroles = bottomSheetDialog.findViewById(R.id.guestrole);
         expstmp = bottomSheetDialog.findViewById(R.id.expstmp);
         btnShareCode = bottomSheetDialog.findViewById(R.id.btnShare);
+        LinearLayout ll_back = bottomSheetDialog.findViewById(R.id.linear6);
+        LinearLayout ll_backOrShare = bottomSheetDialog.findViewById(R.id.linear7);
+
+        ll_back.setVisibility(View.GONE);
+        ll_backOrShare.setVisibility(View.VISIBLE);
 
         final ListModel model = list.get(posy);
 
@@ -449,7 +456,7 @@ public class TodaysGuest extends Fragment {
            }
        });
 
-        back.setOnClickListener(new View.OnClickListener() {
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 bottomSheetDialog.dismiss();
@@ -473,7 +480,7 @@ public class TodaysGuest extends Fragment {
     }
 
     private void qrCodeDialog(final String code) {
-        bottomSheetDialog = new BottomSheetDialog(getActivity());
+       final Dialog bottomSheetDialog = new BottomSheetDialog(getActivity());
         bottomSheetDialog.setContentView(R.layout.qr_code);
         bottomSheetDialog.setCanceledOnTouchOutside(false);
         bottomSheetDialog.setCancelable(false);
@@ -499,10 +506,10 @@ public class TodaysGuest extends Fragment {
             @Override
             public void onClick(View v) {
                 bottomSheetDialog.dismiss();
-                Intent intent = getActivity().getIntent();
+                /*Intent intent = getActivity().getIntent();
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 getActivity().finish();
-                startActivity(intent);
+                startActivity(intent);*/
                 //   getFragmentManager().popBackStack();
                 // mn.HomedataList();
             }
