@@ -98,7 +98,7 @@ public class AddGuest extends Fragment {
     private static final int PICK_CONTACT = 1;
     private int count = 1;
     private Button invite;
-    private static final int PERMISSION_REQUEST_CODE = 200;
+    private static final int PERMISSION_REQUEST_CODE = 100;
     String number, guestrole = "1", usersssid, adminids, flatids;
     private BottomSheetDialog bottomSheetDialog;
     private SessionManager sessionManager;

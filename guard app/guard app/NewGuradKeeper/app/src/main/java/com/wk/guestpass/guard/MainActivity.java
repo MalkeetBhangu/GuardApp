@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
     CircularImageView doc, pic;
     private static final int PERMISSION_REQUEST_CODE = 200;
     private static final int REQUEST_CONNECT_DEVICE = 1;
+    EditText tvVisitorNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -350,7 +351,7 @@ public class MainActivity extends AppCompatActivity {
         mRequestQueue1.add(stringRequest1);
     }
 
-    public void checkindata(final String guestid, final String ttlguest) {
+    public void checkindata(final String guestid, final String ttlguest, String visitorNumberPlate) {
 
         final ProgressDialog showMe = new ProgressDialog(MainActivity.this);
         showMe.setMessage("Please wait");
@@ -463,6 +464,9 @@ public class MainActivity extends AppCompatActivity {
         vistdoc = bottomSheetDialog.findViewById(R.id.adddoc);
         view = bottomSheetDialog.findViewById(R.id.views);
         cancel = bottomSheetDialog.findViewById(R.id.cancel);
+        tvVisitorNumber = bottomSheetDialog.findViewById(R.id.visitorNumber);
+
+        final String visitorNumberPlate = tvVisitorNumber.getText().toString();
 
         Date d=new Date();
         SimpleDateFormat sdf=new SimpleDateFormat("hh:mm a");
@@ -550,7 +554,7 @@ public class MainActivity extends AppCompatActivity {
         checkins.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkindata(guestid, String.valueOf(count));
+                checkindata(guestid, String.valueOf(count),visitorNumberPlate);
                 bottomSheetDialog.dismiss();
             }
         });
