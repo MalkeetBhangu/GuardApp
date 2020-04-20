@@ -75,7 +75,7 @@
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:background="#F2F2F2"/>
+                android:background="@color/whitef2f2f2"/>
 
             <RelativeLayout
                 android:id="@+id/adddoc"
@@ -123,7 +123,7 @@
             android:layout_height="1dp"
             android:visibility="gone"
             android:layout_marginTop="10dp"
-            android:background="#F2F2F2"/>
+            android:background="@color/whitef2f2f2"/>
 
     </LinearLayout>
 
@@ -154,7 +154,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_light"
                 android:text="Guest name"
-                android:textColor="#FFA9A8A8"
+                android:textColor="@color/lightGrayFFA9A8A8"
                 android:textSize="11dp" />
 
             <TextView
@@ -163,7 +163,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_medium"
                 android:text="Prasad Pawar patil Nashikkar"
-                android:textColor="#000"
+                android:textColor="@color/black"
                 android:textSize="15dp" />
 
         </LinearLayout>
@@ -183,8 +183,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_light"
-            android:text="Guest From"
-            android:textColor="#FFA9A8A8"
+            android:text="@string/guest_from"
+            android:textColor="@color/lightGrayFFA9A8A8"
             android:textSize="11dp" />
 
         <LinearLayout
@@ -240,8 +240,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_light"
-                    android:text="Date"
-                    android:textColor="#FFA9A8A8"
+                    android:text="@string/date"
+                    android:textColor="@color/lightGrayFFA9A8A8"
                     android:textSize="11dp" />
 
                 <TextView
@@ -250,7 +250,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:text="23-jan-2019"
-                    android:textColor="#000" />
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 
@@ -266,8 +266,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_light"
-                    android:text="Total Guest"
-                    android:textColor="#FFA9A8A8"
+                    android:text="@string/total_guest"
+                    android:textColor="@color/lightGrayFFA9A8A8"
                     android:textSize="11dp" />
 
                 <TextView
@@ -276,7 +276,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:text="04 Guest"
-                    android:textColor="#000" />
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 
@@ -299,8 +299,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_light"
-                    android:text="Set Time"
-                    android:textColor="#FFA9A8A8"
+                    android:text="@string/set_time"
+                    android:textColor="@color/lightGrayFFA9A8A8"
                     android:textSize="11dp" />
 
                 <TextView
@@ -309,7 +309,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:text="10:30 PM"
-                    android:textColor="#000" />
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 
@@ -324,8 +324,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_light"
-                    android:text="In Time"
-                    android:textColor="#FFA9A8A8"
+                    android:text="@string/in_time"
+                    android:textColor="@color/lightGrayFFA9A8A8"
                     android:textSize="11dp" />
 
                 <TextView
@@ -334,7 +334,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:text="10:37 PM"
-                    android:textColor="#000" />
+                    android:textColor="@color/black" />
 
 
             </LinearLayout>
@@ -358,8 +358,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_light"
-                    android:text="Contact"
-                    android:textColor="#FFA9A8A8"
+                    android:text="@string/contact"
+                    android:textColor="@color/lightGrayFFA9A8A8"
                     android:textSize="11dp" />
 
                 <TextView
@@ -368,7 +368,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:text="+91 9990000999"
-                    android:textColor="#000" />
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 
@@ -384,8 +384,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_light"
-                    android:text="Guest Type"
-                    android:textColor="#FFA9A8A8"
+                    android:text="@string/guest_type"
+                    android:textColor="@color/lightGrayFFA9A8A8"
                     android:textSize="11dp" />
 
                 <TextView
@@ -393,10 +393,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
-                    android:text="Known"
+                    android:text="@string/known"
                     android:textStyle="bold"
                     android:singleLine="true"
-                    android:textColor="#6AC259" />
+                    android:textColor="@color/green6AC259" />
 
             </LinearLayout>
 
@@ -423,8 +423,8 @@
                     android:layout_marginRight="5dp"
                     android:drawablePadding="10dp"
                     android:singleLine="true"
-                    android:hint="Visitor Number Plate"
-                    android:textColor="#000"
+                    android:hint="@string/visitor_number_plate"
+                    android:textColor="@color/black"
                     android:textSize="16dp"
                     android:theme="@style/EditText.Green" />
 
@@ -443,7 +443,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginRight="15dp"
         android:layout_weight="1"
-        android:background="#f5f2f2"></View>
+        android:background="@color/whitef2f2f2"></View>
 
     <LinearLayout
         android:id="@+id/linear5"
@@ -464,8 +464,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_light"
-                android:text="Visite Purpose"
-                android:textColor="#FFA9A8A8"
+                android:text="@string/visite_purpose"
+                android:textColor="@color/lightGrayFFA9A8A8"
                 android:textSize="10dp" />
 
             <TextView
@@ -473,7 +473,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="2"
-                android:textColor="#000"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:text="Lorem lpsum is simply dummy text of printing and typesetting industry." />
 
@@ -515,8 +515,8 @@
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_printer"
                 android:drawablePadding="8dp"
-                android:text="CHECK IN"
-                android:textColor="#FFFFFF"
+                android:text="@string/check_in"
+                android:textColor="@color/white"
                 android:textSize="13sp"
                 android:textStyle="bold" />
         </LinearLayout>

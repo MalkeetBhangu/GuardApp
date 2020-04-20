@@ -5,17 +5,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="@color/white"
     tools:context="com.wk.guestpass.guard.LoginActivity">
 
     <RelativeLayout
         android:id="@+id/first"
-        android:background="#fff"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="240dp">
 
         <RelativeLayout
-            android:background="#fff"
+            android:background="@color/white"
             android:paddingBottom="14dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -60,8 +60,8 @@
             android:layout_alignParentBottom="true"
             android:fontFamily="@font/ubuntu"
             android:textSize="22sp"
-            android:textColor="#fff"
-            android:text="Guard Login" />
+            android:textColor="@color/white"
+            android:text="@string/guard_login" />
 
     </RelativeLayout>
 

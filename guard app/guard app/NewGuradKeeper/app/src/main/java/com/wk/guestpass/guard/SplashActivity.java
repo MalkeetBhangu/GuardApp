@@ -82,14 +82,14 @@ public class SplashActivity extends AppCompatActivity {
                                 },3000);
                             }
                         } catch (JSONException e) {
-                            Log.e("TAG", "Something Went Wrong");
+//                            Log.e("TAG", "Something Went Wrong");
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast toast = Toast.makeText(getApplicationContext(), "Network Error", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(getApplicationContext(), R.string.network_error, Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
                         finish();

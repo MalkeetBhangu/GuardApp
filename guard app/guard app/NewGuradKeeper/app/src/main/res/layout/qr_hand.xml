@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#f2f2f2"
+    android:background="@color/whitef2f2f2"
     android:fitsSystemWindows="true">
 
 <ScrollView
@@ -75,9 +75,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_light"
-            android:text="Guest Login"
+            android:text="@string/guest_login"
             android:layout_gravity="center_horizontal"
-            android:textColor="#c9c4c4"
+            android:textColor="@color/lightGray"
             android:textSize="11dp" />
         <TextView
             android:layout_width="wrap_content"
@@ -85,7 +85,7 @@
             android:fontFamily="@font/roboto_medium"
             android:layout_gravity="center_horizontal"
             android:text="Prasad Pawar Patil"
-            android:textColor="#fff"
+            android:textColor="@color/white"
             android:textSize="15dp"/>
     </LinearLayout>
 
@@ -100,7 +100,7 @@
         android:layout_marginRight="15dp"
         android:layout_marginBottom="10dp"
         android:layout_below="@id/llayout1"
-        android:background="#c9c4c4"></View>
+        android:background="@color/lightGray"></View>
 
 
     <LinearLayout
@@ -122,7 +122,7 @@
             android:gravity="left"
             android:layout_weight="1"
             android:text="Sai Nivas Apartment"
-            android:textColor="#fff"
+            android:textColor="@color/white"
             android:textSize="12dp" />
 
         <TextView
@@ -134,7 +134,7 @@
             android:gravity="right"
             android:text="Today's Guest : 20"
             android:layout_weight="1"
-            android:textColor="#fff"
+            android:textColor="@color/white"
             android:textSize="12dp" />
 
 
@@ -178,13 +178,13 @@
                     android:layout_height="1dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="5dp"
-                    android:background="#F2F2F2" ></View>
+                    android:background="@color/whitef2f2f2" ></View>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="Scan QR Code"
-                    android:textColor="#1D1918"
+                    android:text="@string/scan_qr_code"
+                    android:textColor="@color/black1D1918"
                     android:textSize="15dp"/>
 
             </LinearLayout>
@@ -194,7 +194,7 @@
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="5dp"
-                android:background="#F2F2F2" ></View>
+                android:background="@color/whitef2f2f2" ></View>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -219,14 +219,14 @@
                     android:layout_height="1dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="5dp"
-                    android:background="#F2F2F2" ></View>
+                    android:background="@color/whitef2f2f2" ></View>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="Enter Manual Code"
-                    android:textColor="#1D1918"
+                    android:text="@string/enter_manual_code"
+                    android:textColor="@color/black1D1918"
                     android:textSize="15dp"/>
 
             </LinearLayout>

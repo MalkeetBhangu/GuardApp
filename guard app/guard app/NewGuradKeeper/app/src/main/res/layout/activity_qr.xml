@@ -22,6 +22,6 @@
         app:frameAspectRatioHeight="1"
         app:frameSize="0.75"
         app:frameThickness="3dp"
-        app:maskColor="#77000000"/>
+        app:maskColor="@color/gray77000000"/>
 
 </FrameLayout>

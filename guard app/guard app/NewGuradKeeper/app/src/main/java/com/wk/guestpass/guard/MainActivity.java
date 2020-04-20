@@ -126,15 +126,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(MainActivity.this, R.style.MyDialogTheme);
-                builder.setMessage("Are you sure you want to Logout");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                builder.setMessage(R.string.logout_dialog_message);
+                builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         session.logoutUser();
                         dialog.dismiss();
                         finish();
                     }
                 });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
                     }
@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (codes.getText().toString().equals("")) {
-                    Toast.makeText(MainActivity.this, "Please Enter Correct Code!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, R.string.please_enter_correct_code, Toast.LENGTH_SHORT).show();
                 } else {
                     TodaysdataList(codes.getText().toString());
                     dialog.dismiss();
@@ -197,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         if (shouldShowRequestPermissionRationale(ACCESS_FINE_LOCATION)) {
-                            showMessageOKCancel("You need to allow access to both the permissions",
+                            showMessageOKCancel(getResources().getString(R.string.you_need_to_allow_access_permission),
                                     new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
@@ -219,8 +219,8 @@ public class MainActivity extends AppCompatActivity {
     private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
         new AlertDialog.Builder(MainActivity.this)
                 .setMessage(message)
-                .setPositiveButton("OK", okListener)
-                .setNegativeButton("Cancel", null)
+                .setPositiveButton(R.string.ok, okListener)
+                .setNegativeButton(R.string.cancel, null)
                 .create()
                 .show();
     }
@@ -229,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
     public void TodaysdataList(final String respcode) {
 
         final ProgressDialog showMe = new ProgressDialog(MainActivity.this);
-        showMe.setMessage("Please wait");
+        showMe.setMessage(getResources().getString(R.string.please_wait));
         showMe.setCancelable(false);
         showMe.setCanceledOnTouchOutside(false);
         showMe.show();
@@ -269,7 +269,7 @@ public class MainActivity extends AppCompatActivity {
                             }
 
                         } catch (JSONException e) {
-                            Log.e("TAG", "Something Went Wrong");
+//                            Log.e("TAG", "Something Went Wrong");
                         }
                     }
                 },
@@ -277,7 +277,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         showMe.dismiss();
-                        Toast toast = Toast.makeText(getApplicationContext(), "Network Error", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(getApplicationContext(), R.string.network_error, Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
                     }
@@ -322,14 +322,14 @@ public class MainActivity extends AppCompatActivity {
                                 apart.setText(j.getString("apartment"));
                             }
                         } catch (JSONException e) {
-                            Log.e("TAG", "Something Went Wrong");
+//                            Log.e("TAG", "Something Went Wrong");
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast toast = Toast.makeText(getApplicationContext(), "Network Error", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(getApplicationContext(), R.string.network_error, Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
                     }
@@ -355,7 +355,7 @@ public class MainActivity extends AppCompatActivity {
     public void checkindata(final String guestid, final String ttlguest, String visitorNumberPlate) {
 
         final ProgressDialog showMe = new ProgressDialog(MainActivity.this);
-        showMe.setMessage("Please wait");
+        showMe.setMessage(getResources().getString(R.string.please_wait));
         showMe.setCancelable(false);
         showMe.setCanceledOnTouchOutside(false);
         showMe.show();
@@ -375,7 +375,7 @@ public class MainActivity extends AppCompatActivity {
                             String status = j.getString("status");
                             if (status.equals("1")) {
                                 Toast toast = Toast.makeText(getApplicationContext(),
-                                        "SuccessFully CheckedIn", Toast.LENGTH_LONG);
+                                        R.string.successFully_checkedIn, Toast.LENGTH_LONG);
                                 toast.setGravity(Gravity.CENTER, 0, 0);
                                 toast.show();
                                 bottomSheetDialog.dismiss();
@@ -392,7 +392,7 @@ public class MainActivity extends AppCompatActivity {
                                 toast.show();
                             }
                         } catch (JSONException e) {
-                            Log.e("TAG", "Something Went Wrong");
+//                            Log.e("TAG", "Something Went Wrong");
                         }
                     }
                 },
@@ -401,7 +401,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         showMe.dismiss();
                         bottomSheetDialog.dismiss();
-                        Toast toast = Toast.makeText(getApplicationContext(), "Network Error", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(getApplicationContext(), R.string.network_error, Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
                     }
@@ -485,9 +485,9 @@ public class MainActivity extends AppCompatActivity {
         vstpurpse.setText(gpurpose);
 
         if (grole.equals("1")) {
-            guestroletag.setText("KNOWN GUEST");
+            guestroletag.setText(R.string.known);
         } else {
-            guestroletag.setText("UNKNOWN GUEST");
+            guestroletag.setText(R.string.uknowngst);
             view.setVisibility(View.VISIBLE);
             layout.setVisibility(View.VISIBLE);
         }

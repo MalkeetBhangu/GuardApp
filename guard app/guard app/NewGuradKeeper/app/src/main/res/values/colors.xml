@@ -22,4 +22,15 @@
     <color name="green_500">#4CAF50</color>
     <color name="dialogblue">#028fd6</color>
     <color name="dialoggray">#ededed</color>
+
+
+    <color name="whitef2f2f2">#f2f2f2</color>
+    <color name="lightGray">#c9c4c4</color>
+    <color name="lightGrayc2c2c2">#c2c2c2</color>
+    <color name="lightGrayFFA9A8A8">#FFA9A8A8</color>
+    <color name="lightGraye5e6e7">#e5e6e7</color>
+    <color name="black1D1918">#1D1918</color>
+    <color name="gray77000000">#77000000</color>
+    <color name="black221f20">#221f20</color>
+    <color name="green6AC259">#6AC259</color>
 </resources>
