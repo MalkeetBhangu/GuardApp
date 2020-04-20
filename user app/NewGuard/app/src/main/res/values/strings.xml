@@ -99,4 +99,10 @@
     <string name="you_need_to_allow_access_the_permission">You need to allow access the permissions</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="add_new">Add New</string>
+    <string name="guest_bottomsheet">Guest</string>
+    <string name="today_s">Today\'s</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="successful">Successful</string>
+    <string name="failed">Failed</string>
 </resources>

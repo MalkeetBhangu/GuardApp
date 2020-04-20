@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.FloatingActionButton;
@@ -23,7 +24,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -46,6 +46,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.crashlytics.android.Crashlytics;
+import com.github.ybq.android.spinkit.style.CubeGrid;
 import com.wk.guestpass.app.Adpaters.HomeListAdapter;
 import com.wk.guestpass.app.Fragments.AddGuest;
 import com.wk.guestpass.app.Fragments.TodaysGuest;
@@ -55,7 +57,6 @@ import com.wk.guestpass.app.R;
 import com.wk.guestpass.app.Utilities.Config;
 import com.wk.guestpass.app.Utilities.RecyclerTouchListener;
 import com.wk.guestpass.app.Utilities.SessionManager;
-import com.github.ybq.android.spinkit.style.CubeGrid;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -69,10 +70,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import com.crashlytics.android.Crashlytics;
+
 import io.fabric.sdk.android.Fabric;
 
-import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static android.Manifest.permission.CALL_PHONE;
 
 public class MainActivity extends AppCompatActivity {
@@ -398,6 +398,8 @@ public class MainActivity extends AppCompatActivity {
         };
         Drawer.addDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
+
+        /*notificationChanel();*/
     }
 
     public void HomedataList() {
@@ -646,4 +648,24 @@ public class MainActivity extends AppCompatActivity {
                 .create()
                 .show();
     }
+
+    /*private void notificationChanel(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel("MyNotification","MyNotification", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+        FirebaseMessaging.getInstance().subscribeToTopic("general")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = getString(R.string.successful);
+                        if (!task.isSuccessful()) {
+                            msg = getString(R.string.failed);
+                        }
+                        Log.d(TAG, msg);
+                        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }*/
 }

@@ -49,8 +49,8 @@
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center_horizontal"
                     android:fontFamily="@font/roboto"
-                    android:text="Add New"
-                    android:textColor="#000"
+                    android:text="@string/add_new"
+                    android:textColor="@color/color_black"
                     android:textSize="12dp" />
 
                 <TextView
@@ -60,9 +60,9 @@
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center_horizontal"
                     android:fontFamily="@font/roboto"
-                    android:text="Guest"
+                    android:text="@string/guest_bottomsheet"
                     android:gravity="center"
-                    android:textColor="#000"
+                    android:textColor="@color/color_black"
                     android:textSize="12dp" />
             </RelativeLayout>
 
@@ -98,8 +98,8 @@
                     android:layout_gravity="center_horizontal"
                     android:fontFamily="@font/roboto"
                     android:layout_centerHorizontal="true"
-                    android:text="Today's"
-                    android:textColor="#000"
+                    android:text="@string/today_s"
+                    android:textColor="@color/color_black"
                     android:textSize="12dp" />
 
                 <TextView
@@ -108,9 +108,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:fontFamily="@font/roboto"
-                    android:text="Guest"
+                    android:text="@string/guest_bottomsheet"
                     android:layout_centerHorizontal="true"
-                    android:textColor="#000"
+                    android:textColor="@color/color_black"
                     android:textSize="12dp" />
             </RelativeLayout>
 
@@ -146,8 +146,8 @@
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center_horizontal"
                     android:fontFamily="@font/roboto"
-                    android:text="Upcoming"
-                    android:textColor="#000"
+                    android:text="@string/upcoming"
+                    android:textColor="@color/color_black"
                     android:textSize="12dp" />
 
                 <TextView
@@ -157,8 +157,8 @@
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center_horizontal"
                     android:fontFamily="@font/roboto"
-                    android:text="Guest"
-                    android:textColor="#000"
+                    android:text="@string/guest_bottomsheet"
+                    android:textColor="@color/color_black"
                     android:textSize="12dp" />
             </RelativeLayout>
 

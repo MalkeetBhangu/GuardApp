@@ -145,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         dashboard();
+        /*notificationChanel();*/
     }
 
     private void Codedialog() {
@@ -698,5 +699,23 @@ public class MainActivity extends AppCompatActivity {
             mRequestQueue1.cancelAll(TAG);
         }
     }
-
+ /*private void notificationChanel(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel("MyNotification","MyNotification", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+        FirebaseMessaging.getInstance().subscribeToTopic("general")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = getString(R.string.successful);
+                        if (!task.isSuccessful()) {
+                            msg = getString(R.string.failed);
+                        }
+                        Log.d(TAG, msg);
+                        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }*/
 }
