@@ -18,10 +18,14 @@
     <color name="color_lightGray777777">#777777</color>
     <color name="color_lightGray939393">#939393</color>
     <color name="color_gray5c5c5c">#5c5c5c</color>
+    <color name="color_gray727272">#727272</color>
+    <color name="color_graye2e1e1">#e2e1e1</color>
     <color name="color_lightGreen30caa5">#30caa5</color>
     <color name="color_lightGreen31cca5">#31cca5</color>
     <color name="color_lightGreen2AB594">#2AB594</color>
     <color name="color_whiteF2F2F2">#F2F2F2</color>
     <color name="color_lightBron7f6b64">#7f6b64</color>
     <color name="color_pinka54686">#a54686</color>
+    <color name="color_blue043B83">#043B83</color>
+    <color name="color_purple781082">#781082</color>
 </resources>

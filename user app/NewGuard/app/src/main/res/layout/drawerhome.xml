@@ -119,6 +119,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/history"
+                android:text="@string/history"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="20dp"
+                android:drawablePadding="30dp"
+                android:fontFamily="@font/poppins"
+                android:drawableLeft="@drawable/ic_history_24dp"
+                android:textColor="@color/color_black221f20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/help"
