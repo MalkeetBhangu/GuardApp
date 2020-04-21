@@ -71,7 +71,7 @@
         android:layout_marginBottom="30dp"
         android:layout_marginTop="25sp"
         android:id="@+id/bottomlay"
-        android:background="#fff"
+        android:background="@color/color_white"
         android:orientation="vertical">
 
 
@@ -88,7 +88,7 @@
                 android:fontFamily="@font/ubuntu"
                 android:textSize="14sp"
                 android:layout_marginTop="5dp"
-                android:textColor="#9f9f9f"
+                android:textColor="@color/color_gray9f9f9f"
                 android:text="@string/text1" />
 
 
@@ -222,6 +222,39 @@
                 android:layout_marginLeft="5dp"
                 android:textColor="@color/color_gray5c5c5c"
                 android:text="@string/text5" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/ubuntu"
+                android:textSize="14sp"
+                android:layout_marginRight="5dp"
+                android:textColor="@color/color_lightGray777777"
+                android:text="@string/forgot_pin" />
+
+            <TextView
+                android:id="@+id/forgotPin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/ubuntu"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/color_gray5c5c5c"
+                android:text="@string/click_here" />
 
         </LinearLayout>
 

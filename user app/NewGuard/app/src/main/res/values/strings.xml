@@ -107,8 +107,10 @@
     <string name="failed">Failed</string>
     <string name="visit_time">Visit Time :</string>
     <string name="history">History</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="guest_history">Guest History</string>
+    <string name="forgot_pin">Forgot Pin ?</string>
+    <string name="click_here">Click Here</string>
+    <string name="submit">Submit</string>
+    <string name="send_the_link_on_your_email">Send the link on your email. Please Check your Email.</string>
+    <string name="enter_valid_email">Enter valid email.</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.wk.guestpass.app.Activities;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -41,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText number,pins;
     Button login;
-    private TextView loginbtn, signup;
+    private TextView loginbtn, signup, tvForgotPin;
     StringRequest stringRequest;
     private String user1;
     private String passd;
@@ -86,6 +87,7 @@ public class LoginActivity extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progress);
         mainscreen=(RelativeLayout)findViewById(R.id.overmain);
         bgrnd=(RelativeLayout)findViewById(R.id.bgrnd);
+        tvForgotPin = findViewById(R.id.forgotPin);
 
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +114,46 @@ public class LoginActivity extends AppCompatActivity {
 
                 Intent i = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(i);
+            }
+        });
+
+
+        tvForgotPin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog dialog  = new Dialog(LoginActivity.this);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.forgot_pin);
+                dialog.setCanceledOnTouchOutside(true);
+
+                final Button btnForgotPin;
+                final EditText edtEmail;
+
+                edtEmail = dialog.findViewById(R.id.edtEmail);
+                btnForgotPin = dialog.findViewById(R.id.btnForgotPin);
+                final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+                btnForgotPin.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (edtEmail.getText().toString().equals("")){
+                            Toast toast = Toast.makeText(LoginActivity.this, R.string.enter_email_first, Toast.LENGTH_SHORT);
+                            toast.setGravity(Gravity.CENTER, 0, 0);
+                            toast.show();
+                        }else if (!edtEmail.getText().toString().matches(emailPattern)){
+                            Toast toast = Toast.makeText(LoginActivity.this, R.string.enter_valid_email, Toast.LENGTH_SHORT);
+                            toast.setGravity(Gravity.CENTER, 0, 0);
+                            toast.show();
+                        }else {
+                            Toast toast = Toast.makeText(LoginActivity.this, R.string.send_the_link_on_your_email, Toast.LENGTH_LONG);
+                            toast.setGravity(Gravity.CENTER, 0, 0);
+                            toast.show();
+                            dialog.dismiss();
+                        }
+                    }
+                });
+
+                dialog.show();
             }
         });
 

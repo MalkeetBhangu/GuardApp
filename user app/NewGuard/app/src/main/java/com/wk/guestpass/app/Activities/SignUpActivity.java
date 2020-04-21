@@ -160,7 +160,7 @@ public class SignUpActivity extends AppCompatActivity {
             toast.show();
         }
         else if(email.getText().toString().equals("")){
-            Toast toast = Toast.makeText(SignUpActivity.this, "Enter Email First!!!!", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(SignUpActivity.this, R.string.enter_email_first, Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
         }
