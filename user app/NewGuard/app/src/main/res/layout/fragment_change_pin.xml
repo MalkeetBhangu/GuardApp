@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_graye2e1e1"
+    android:clickable="true"
+    tools:context="com.wk.guestpass.app.Fragments.ChangePin">
+
+    <LinearLayout
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient1"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:id="@+id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+
+
+            <RelativeLayout
+                android:id="@+id/rlBack"
+                android:layout_width="50dp"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/ic_backdark" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlLogout"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="25dp">
+
+                <ImageView
+                    android:id="@+id/logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+
+                    android:src="@drawable/ic_power" />
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="50dp"
+                android:layout_marginLeft="50dp"
+                android:fontFamily="@font/ubuntu"
+                android:text="@string/change_pin"
+                android:textColor="@color/color_white"
+                android:textSize="20dp" />
+        </RelativeLayout>
+
+        <ScrollView
+            android:id="@+id/bottomlay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/homeimage"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_white"
+                android:orientation="vertical"
+                android:paddingBottom="10dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/oldPin"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginRight="21dp"
+                    android:drawableLeft="@drawable/ic_padlock"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/ubuntu"
+                    android:hint="@string/old_pin"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberPassword"
+                    android:singleLine="true"
+                    android:textColorHint="@color/color_lightGray"
+                    android:textSize="14sp"
+                    android:theme="@style/EditText.Green" />
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/newPin"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginRight="21dp"
+                    android:drawableLeft="@drawable/ic_padlock"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/ubuntu"
+                    android:hint="@string/new_pin"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberPassword"
+                    android:singleLine="true"
+                    android:textColorHint="@color/color_lightGray"
+                    android:textSize="14sp"
+                    android:theme="@style/EditText.Green" />
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/confirmPin"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginRight="21dp"
+                    android:drawableLeft="@drawable/ic_padlock"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/ubuntu"
+                    android:hint="@string/confirm_pin"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberPassword"
+                    android:maxLength="12"
+                    android:singleLine="true"
+                    android:textColorHint="@color/color_lightGray"
+                    android:textSize="14sp"
+                    android:theme="@style/EditText.Green" />
+
+
+
+
+                <Button
+                    android:id="@+id/btnChangePin"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginRight="21dp"
+                    android:background="@drawable/gradd2"
+                    android:elevation="0dp"
+                    android:fontFamily="@font/ubuntu"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:text="@string/change_pin"
+                    android:textColor="@color/color_white"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/overmain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/blacktransparent"
+        android:clickable="false"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_weight="2" />
+
+        <!--  <pl.droidsonroids.gif.GifImageView
+              android:id="@+id/gifImageView"
+              android:layout_centerVertical="true"
+              android:layout_centerHorizontal="true"
+              android:visibility="visible"
+              android:src="@drawable/triangles"
+              android:layout_width="180sp"
+              android:layout_height="180sp"/>
+  -->
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/gifImageView"
+            style="@style/SpinKitView.CubeGrid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/colorAccent" />
+
+    </RelativeLayout>
+
+</FrameLayout>

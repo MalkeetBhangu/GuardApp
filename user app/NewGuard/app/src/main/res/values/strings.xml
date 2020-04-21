@@ -113,4 +113,12 @@
     <string name="submit">Submit</string>
     <string name="send_the_link_on_your_email">Send the link on your email. Please Check your Email.</string>
     <string name="enter_valid_email">Enter valid email.</string>
+    <string name="change_pin">Change Pin</string>
+    <string name="old_pin">Old Pin</string>
+    <string name="new_pin">New Pin</string>
+    <string name="fill_old_pin">Fill old Pin</string>
+    <string name="fill_new_pin">Fill new Pin</string>
+    <string name="fill_confirm_pin">Fill Confirm Pin</string>
+    <string name="new_pin_and_confirm_pin_same">New Pin and Confirm pin not match</string>
+    <string name="pin_change_successful">Pin Change Successful</string>
 </resources>

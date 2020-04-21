@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -30,6 +32,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.github.ybq.android.spinkit.style.CubeGrid;
 import com.wk.guestpass.app.Activities.MainActivity;
 import com.wk.guestpass.app.Adpaters.HomeListAdapter;
 import com.wk.guestpass.app.FragAdapters.GuestHistoryAdapter;
@@ -55,7 +58,7 @@ import java.util.Random;
 
 public class GuestHistory extends Fragment {
 
-    ImageView mBack,mLogout, mNoData, expstmp, guestroles;
+    ImageView mBack, mLogout, mNoData, expstmp, guestroles;
     SearchView mSearchView;
     SwipeRefreshLayout mSwipeRefreshLayout;
     RecyclerView mGuestHistoryRecyclerView;
@@ -84,9 +87,22 @@ public class GuestHistory extends Fragment {
         mMainScreen = view.findViewById(R.id.overmain);
         mProgressBar = view.findViewById(R.id.progress);
 
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         session = new SessionManager(getActivity());
         HashMap<String, String> users = session.getUserDetails();
         usersssid = users.get(SessionManager.KEY_ID);
+
+
+        CubeGrid cubeGrid = new CubeGrid();
+        cubeGrid.setColor(getResources().getColor(R.color.colorPrimary));
+        cubeGrid.start();
+        mProgressBar.setIndeterminateDrawable(cubeGrid);
 
 
         mGuestHistoryRecyclerView.setHasFixedSize(false);
@@ -164,7 +180,6 @@ public class GuestHistory extends Fragment {
         });
 
         historyDataList();
-        return view;
     }
 
     public void historyDataList() {

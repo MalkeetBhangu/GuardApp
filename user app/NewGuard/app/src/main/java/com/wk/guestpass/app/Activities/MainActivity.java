@@ -50,6 +50,7 @@ import com.crashlytics.android.Crashlytics;
 import com.github.ybq.android.spinkit.style.CubeGrid;
 import com.wk.guestpass.app.Adpaters.HomeListAdapter;
 import com.wk.guestpass.app.Fragments.AddGuest;
+import com.wk.guestpass.app.Fragments.ChangePin;
 import com.wk.guestpass.app.Fragments.GuestHistory;
 import com.wk.guestpass.app.Fragments.TodaysGuest;
 import com.wk.guestpass.app.Fragments.UpcGuest;
@@ -92,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
     Dialog dialog;
     private static final int PERMISSION_REQUEST_CODE = 200;
     Toolbar toolbar;
-    private TextView drname, flatno, apartment, propcodes,logouts, help, about, history;
+    private TextView drname, flatno, apartment, propcodes,logouts, help, about;
     private TextView dname, ddate, dsetime, dintime, dcntct, dguest, dpurpose;
     String nm, ap, noo;
     android.support.v7.app.ActionBar actionBar;
@@ -137,7 +138,8 @@ public class MainActivity extends AppCompatActivity {
         logouts = (TextView) findViewById(R.id.logoutss);
         help = (TextView) findViewById(R.id.help);
         about = (TextView) findViewById(R.id.about);
-        history = findViewById(R.id.history);
+        TextView tvHistory = findViewById(R.id.history);
+        TextView tvChangePin = findViewById(R.id.tvChangePin);
 
        // requestpermission();
 
@@ -270,7 +272,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        history.setOnClickListener(new View.OnClickListener() {
+
+        tvChangePin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(new ChangePin());
+                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                drawer.closeDrawer(GravityCompat.START);
+            }
+        });
+
+        tvHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 replaceFragment(new GuestHistory());
