@@ -51,6 +51,7 @@ import com.github.ybq.android.spinkit.style.CubeGrid;
 import com.wk.guestpass.app.Adpaters.HomeListAdapter;
 import com.wk.guestpass.app.Fragments.AddGuest;
 import com.wk.guestpass.app.Fragments.ChangePin;
+import com.wk.guestpass.app.Fragments.EditProfile;
 import com.wk.guestpass.app.Fragments.GuestHistory;
 import com.wk.guestpass.app.Fragments.TodaysGuest;
 import com.wk.guestpass.app.Fragments.UpcGuest;
@@ -93,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
     Dialog dialog;
     private static final int PERMISSION_REQUEST_CODE = 200;
     Toolbar toolbar;
-    private TextView drname, flatno, apartment, propcodes,logouts, help, about;
+    private TextView drname, flatno, apartment, propcodes, logouts, help, about;
     private TextView dname, ddate, dsetime, dintime, dcntct, dguest, dpurpose;
     String nm, ap, noo;
     android.support.v7.app.ActionBar actionBar;
@@ -104,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
     public CubeGrid cubeGrid;
     SwipeRefreshLayout mSwipeRefreshLayout;
     RelativeLayout addguest, todaysguest, ucguest;
+    Fragment fragment ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         actionBar = getSupportActionBar();
 
+        fragment = getSupportFragmentManager().findFragmentById(R.id.homepage);
         session = new SessionManager(getApplicationContext());
         HashMap<String, String> users = session.getUserDetails();
         usersssid = users.get(SessionManager.KEY_ID);
@@ -125,8 +128,8 @@ public class MainActivity extends AppCompatActivity {
         aprt = users.get(SessionManager.KEY_APRT);
 
         progressBar = (ProgressBar) findViewById(R.id.progress);
-        mainscreen=(RelativeLayout)findViewById(R.id.overmain);
-        bgrnd=(RelativeLayout)findViewById(R.id.bgrnd);
+        mainscreen = (RelativeLayout) findViewById(R.id.overmain);
+        bgrnd = (RelativeLayout) findViewById(R.id.bgrnd);
 
         drname = (TextView) findViewById(R.id.drname);
         flatno = (TextView) findViewById(R.id.flatno);
@@ -140,8 +143,9 @@ public class MainActivity extends AppCompatActivity {
         about = (TextView) findViewById(R.id.about);
         TextView tvHistory = findViewById(R.id.history);
         TextView tvChangePin = findViewById(R.id.tvChangePin);
+        TextView tvEditProfile = findViewById(R.id.tvEditProfile);
 
-       // requestpermission();
+        // requestpermission();
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeToRefresh);
         mRecyclerView = (RecyclerView) findViewById(R.id.homelistrecycler);
@@ -219,14 +223,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        if(!usersssid.isEmpty()){
+        if (!usersssid.isEmpty()) {
             cubeGrid = new CubeGrid();
             cubeGrid.setColor(getResources().getColor(R.color.colorPrimary));
             cubeGrid.start();
             progressBar.setIndeterminateDrawable(cubeGrid);
             HomedataList();
         }
-
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -272,6 +275,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        tvEditProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(new EditProfile());
+                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                drawer.closeDrawer(GravityCompat.START);
+            }
+        });
 
         tvChangePin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -295,7 +306,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                dialog  = new Dialog(MainActivity.this);
+                dialog = new Dialog(MainActivity.this);
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.setContentView(R.layout.help);
                 dialog.setCanceledOnTouchOutside(true);
@@ -310,10 +321,10 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         if (checkPermission()) {
-                            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" +noo));
+                            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + noo));
                             startActivity(intent);
-                        }else {
-                            requestpermission();
+                        } else {
+                            requestPermission();
                         }
 
                     }
@@ -359,6 +370,7 @@ public class MainActivity extends AppCompatActivity {
                         headers.put("apikey", "d29985af97d29a80e40cd81016d939af");
                         return headers;
                     }
+
                     @Override
                     public Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> params = new HashMap<String, String>();
@@ -381,12 +393,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                dialog  = new Dialog(MainActivity.this);
+                dialog = new Dialog(MainActivity.this);
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.setContentView(R.layout.about);
                 dialog.setCanceledOnTouchOutside(false);
 
-                Button back = (Button)dialog.findViewById(R.id.back);
+                Button back = (Button) dialog.findViewById(R.id.back);
                 back.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -475,10 +487,10 @@ public class MainActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             nodata.setVisibility(View.VISIBLE);
                             mRecyclerView.setVisibility(View.GONE);
-                           // mainscreen.setVisibility(View.GONE);
+                            // mainscreen.setVisibility(View.GONE);
 //                            Log.e("TAG", "Something Went Wrong");
                         }
-                          mainscreen.setVisibility(View.GONE);
+                        mainscreen.setVisibility(View.GONE);
                     }
                 },
                 new Response.ErrorListener() {
@@ -530,7 +542,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onStop() {
-         cubeGrid.stop();
+        cubeGrid.stop();
         super.onStop();
         if (mRequestQueue != null) {
             mRequestQueue.cancelAll(TAG);
@@ -562,7 +574,7 @@ public class MainActivity extends AppCompatActivity {
         bottomSheetDialog.setCanceledOnTouchOutside(true);
         bottomSheetDialog.setCancelable(true);
 
-       // ImageView cancel = bottomSheetDialog.findViewById(R.id.cancel);
+        // ImageView cancel = bottomSheetDialog.findViewById(R.id.cancel);
         Button back = bottomSheetDialog.findViewById(R.id.backs);
 
         dname = bottomSheetDialog.findViewById(R.id.detailname);
@@ -631,10 +643,11 @@ public class MainActivity extends AppCompatActivity {
         return /*result == PackageManager.PERMISSION_GRANTED &&*/ result1 == PackageManager.PERMISSION_GRANTED;
     }
 
-    private void requestpermission() {
+    private void requestPermission() {
         ActivityCompat.requestPermissions(MainActivity.this, new String[]
                 {Manifest.permission.CALL_PHONE}, PERMISSION_REQUEST_CODE);
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
@@ -658,6 +671,19 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                 }
+                break;
+
+            case 1001:
+                Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.homepage);
+                if (fragment != null) {
+                    fragment.onRequestPermissionsResult(requestCode, permissions, grantResults);
+                }
+
+                break;
+
+            case 1111:
+                Fragment frag = getSupportFragmentManager().findFragmentById(R.id.homepage);
+                frag.onRequestPermissionsResult(requestCode,permissions,grantResults);
                 break;
         }
     }

@@ -35,19 +35,19 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@color/color_black484848"
-                android:text="@string/forgot_pin" />
+                android:text="@string/enter_user_id" />
 
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/edtEmail"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:drawableLeft="@drawable/ic_envelope"
+                android:drawableLeft="@drawable/ic_phone_call"
                 android:drawablePadding="10dp"
                 android:fontFamily="@font/ubuntu"
-                android:hint="@string/email"
-                android:imeOptions="actionNext"
-                android:inputType="textEmailAddress"
+                android:hint="@string/phone_number"
+                android:imeOptions="actionDone"
+                android:inputType="number"
                 android:singleLine="true"
                 android:textColorHint="@color/color_lightGray"
                 android:textSize="14sp"

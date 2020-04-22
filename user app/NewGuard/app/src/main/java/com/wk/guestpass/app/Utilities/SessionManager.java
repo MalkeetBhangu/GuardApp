@@ -24,6 +24,7 @@ public class SessionManager {
     public static final String KEY_USER="user";
     public static final String KEY_FNO="flatno";
     public static final String KEY_APRT="apartment";
+    public static final String KEY_USER_EMAIL="userEmail";
     private static final String Pref_Name= "Loginpref";
     private static final String IS_LOGIN = "IsLoggedIn";
     public static final String IS_Lock ="Islocked";
@@ -40,7 +41,7 @@ public class SessionManager {
         editor = pref.edit();
     }
 
-    public void createLoginSession(String id, String adminid, String fltid, String mobile,String pcode, String user, String fno, String aprt){
+    public void createLoginSession(String id, String adminid, String fltid, String mobile,String pcode, String user, String fno, String aprt,String userEmail){
 
         editor.putBoolean(IS_LOGIN,true);
         editor.putString(KEY_ID, id);
@@ -51,6 +52,7 @@ public class SessionManager {
         editor.putString(KEY_USER, user);
         editor.putString(KEY_FNO, fno);
         editor.putString(KEY_APRT, aprt);
+        editor.putString(KEY_USER_EMAIL, userEmail);
         editor.commit();
     }
 
@@ -67,6 +69,7 @@ public class SessionManager {
         user.put(KEY_FNO, pref.getString(KEY_FNO,""));
         user.put(KEY_APRT, pref.getString(KEY_APRT,""));
         user.put(IS_Lock,pref.getString(IS_Lock,""));
+        user.put(KEY_USER_EMAIL,pref.getString(KEY_USER_EMAIL,""));
 
         return user;
     }

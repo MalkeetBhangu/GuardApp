@@ -20,7 +20,7 @@ import com.wk.guestpass.app.Utilities.SessionManager;
 
 public class ChangePin extends Fragment {
 
-    EditText edtOldPin, edtNewPin, edtConfirmPin;
+    EditText edtCurrentPin, edtNewPin, edtConfirmPin;
     Button btnChangPin;
     RelativeLayout rlBack, rlLogout;
     SessionManager session;
@@ -30,7 +30,7 @@ public class ChangePin extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_change_pin, container, false);
 
-        edtOldPin = view.findViewById(R.id.oldPin);
+        edtCurrentPin = view.findViewById(R.id.currentPin);
         edtNewPin = view.findViewById(R.id.newPin);
         edtConfirmPin = view.findViewById(R.id.confirmPin);
         btnChangPin = view.findViewById(R.id.btnChangePin);
@@ -78,8 +78,8 @@ public class ChangePin extends Fragment {
         btnChangPin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (edtOldPin.getText().toString().equals("")){
-                    Toast toast = Toast.makeText(getActivity(), R.string.fill_old_pin, Toast.LENGTH_SHORT);
+                if (edtCurrentPin.getText().toString().equals("")){
+                    Toast toast = Toast.makeText(getActivity(), R.string.fill_current_pin, Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 }else if (edtNewPin.getText().toString().equals("")){

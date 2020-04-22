@@ -66,7 +66,7 @@
                 android:layout_marginStart="50dp"
                 android:layout_marginLeft="50dp"
                 android:fontFamily="@font/ubuntu"
-                android:text="@string/change_pin"
+                android:text="@string/edit_profile"
                 android:textColor="@color/color_white"
                 android:textSize="20dp" />
         </RelativeLayout>
@@ -79,6 +79,7 @@
             android:layout_alignParentBottom="true"
             android:layout_margin="10dp">
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -86,56 +87,114 @@
                 android:orientation="vertical"
                 android:paddingBottom="10dp">
 
+
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.mikhaellopez.circularimageview.CircularImageView
+                        android:id="@+id/circularImageView"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="13dp"
+                        android:src="@drawable/ic_user" />
+
+                    <ImageButton
+                        android:id="@+id/ivProfile"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="100dp"
+                        android:layout_toRightOf="@id/circularImageView"
+                        android:background="@drawable/circle"
+                        android:layout_marginLeft="-40dp"/>
+
+                    <ImageView
+                        android:id="@+id/visitphoto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="122dp"
+                        android:clickable="true"
+                        android:layout_marginLeft="-17dp"
+                        android:layout_toRightOf="@id/circularImageView"
+                        android:src="@drawable/camera_white_color" />
+
+                </RelativeLayout>
+
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/currentPin"
+                    android:id="@+id/edtUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="21dp"
+                    android:drawableLeft="@drawable/ic_users1"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/ubuntu"
+                    android:hint="@string/name"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:textColorHint="@color/color_lightGray"
+                    android:textSize="14sp"
+                    android:theme="@style/EditText.Green"
+                    />
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edtPhoneNumber"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginLeft="21dp"
                     android:layout_marginTop="6dp"
                     android:layout_marginRight="21dp"
-                    android:drawableLeft="@drawable/ic_padlock"
+                    android:drawableLeft="@drawable/ic_phone_call"
                     android:drawablePadding="10dp"
                     android:fontFamily="@font/ubuntu"
-                    android:hint="@string/current_pin"
+                    android:hint="@string/phone_number"
                     android:imeOptions="actionNext"
-                    android:inputType="numberPassword"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:textColorHint="@color/color_lightGray"
+                    android:textSize="14sp"
+                    android:theme="@style/EditText.Green"
+                    android:focusable="false"
+                    android:clickable="false"
+                    android:longClickable="false"/>
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edtAlternativeNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginRight="21dp"
+                    android:drawableLeft="@drawable/ic_phone_call"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/ubuntu"
+                    android:hint="@string/alternative_number"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
                     android:singleLine="true"
                     android:textColorHint="@color/color_lightGray"
                     android:textSize="14sp"
                     android:theme="@style/EditText.Green" />
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/newPin"
+                    android:id="@+id/edtEmail"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginLeft="21dp"
                     android:layout_marginTop="6dp"
                     android:layout_marginRight="21dp"
-                    android:drawableLeft="@drawable/ic_padlock"
+                    android:drawableLeft="@drawable/ic_envelope"
                     android:drawablePadding="10dp"
                     android:fontFamily="@font/ubuntu"
-                    android:hint="@string/new_pin"
-                    android:imeOptions="actionNext"
-                    android:inputType="numberPassword"
-                    android:singleLine="true"
-                    android:textColorHint="@color/color_lightGray"
-                    android:textSize="14sp"
-                    android:theme="@style/EditText.Green" />
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/confirmPin"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="21dp"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginRight="21dp"
-                    android:drawableLeft="@drawable/ic_padlock"
-                    android:drawablePadding="10dp"
-                    android:fontFamily="@font/ubuntu"
-                    android:hint="@string/confirm_pin"
+                    android:hint="@string/email"
                     android:imeOptions="actionDone"
-                    android:inputType="numberPassword"
-                    android:maxLength="12"
+                    android:inputType="textEmailAddress"
                     android:singleLine="true"
                     android:textColorHint="@color/color_lightGray"
                     android:textSize="14sp"
@@ -145,7 +204,7 @@
 
 
                 <Button
-                    android:id="@+id/btnChangePin"
+                    android:id="@+id/btnUpdate"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginLeft="21dp"
@@ -155,7 +214,7 @@
                     android:elevation="0dp"
                     android:fontFamily="@font/ubuntu"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
-                    android:text="@string/change_pin"
+                    android:text="@string/update"
                     android:textColor="@color/color_white"
                     android:textSize="18sp" />
 

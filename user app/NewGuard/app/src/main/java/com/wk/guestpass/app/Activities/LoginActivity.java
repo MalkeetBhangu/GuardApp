@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
     public String  userid;
     public String adminid,flatid;
     public String Mobile;
-    public String propcodes,username, flatnos, aprtmnt;
+    public String propcodes,username, flatnos, aprtmnt, userEmail;
     SessionManager sessionManager;
     public GifImageView gifImageView;
     public CubeGrid cubeGrid;
@@ -131,17 +131,13 @@ public class LoginActivity extends AppCompatActivity {
 
                 edtEmail = dialog.findViewById(R.id.edtEmail);
                 btnForgotPin = dialog.findViewById(R.id.btnForgotPin);
-                final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+                /*final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";*/
 
                 btnForgotPin.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (edtEmail.getText().toString().equals("")){
-                            Toast toast = Toast.makeText(LoginActivity.this, R.string.enter_email_first, Toast.LENGTH_SHORT);
-                            toast.setGravity(Gravity.CENTER, 0, 0);
-                            toast.show();
-                        }else if (!edtEmail.getText().toString().matches(emailPattern)){
-                            Toast toast = Toast.makeText(LoginActivity.this, R.string.enter_valid_email, Toast.LENGTH_SHORT);
+                            Toast toast = Toast.makeText(LoginActivity.this, R.string.please_enter_mobile_number, Toast.LENGTH_SHORT);
                             toast.setGravity(Gravity.CENTER, 0, 0);
                             toast.show();
                         }else {
@@ -200,7 +196,8 @@ public class LoginActivity extends AppCompatActivity {
                                     username=json.getString("Name");
                                     flatnos=json.getString("flat_name");
                                     aprtmnt=json.getString("appartment");
-                                    sessionManager.createLoginSession(userid,adminid,flatid,Mobile,propcodes,username,flatnos, aprtmnt);
+                                    userEmail = json.getString("Email id");
+                                    sessionManager.createLoginSession(userid,adminid,flatid,Mobile,propcodes,username,flatnos, aprtmnt,userEmail);
                                     Intent intent=new Intent(getApplicationContext(),MainActivity.class);
                                     startActivity(intent);
                                     finish();
