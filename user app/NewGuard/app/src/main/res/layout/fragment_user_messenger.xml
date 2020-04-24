@@ -1,0 +1,80 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/llParent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tbMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="5dp"
+        android:fitsSystemWindows="true"
+        android:minHeight="?attr/actionBarSize"
+        android:orientation="vertical"
+        android:theme="@style/AppTheme"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp">
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/ivPopBackStack"
+            android:paddingTop="5dp"
+            android:paddingLeft="10dp"
+            android:paddingBottom="5dp"
+            android:src="@drawable/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:ellipsize="marquee"
+                android:padding="5dp"
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/messenger"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:singleLine="true" />
+
+            <TextView
+                android:visibility="gone"
+                android:padding="7dp"
+                android:layout_gravity="right"
+                android:id="@+id/tvDone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Done"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="normal" />
+
+        </FrameLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <com.stfalcon.chatkit.dialogs.DialogsList
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:id="@+id/dialogsList"
+        android:layout_width="match_parent"
+        app:dialogDividerLeftPadding="0dp"
+        app:dialogMessageTextSize="17sp"
+        app:dialogTitleTextStyle="bold"
+        app:dialogUnreadBubbleBackgroundColor="@color/red"
+        app:dialogUnreadItemBackground="@color/gray_transparent"
+        app:dialogUnreadTitleTextStyle="bold"
+        app:reverseLayout="false" />
+
+</LinearLayout>

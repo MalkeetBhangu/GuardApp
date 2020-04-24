@@ -29,4 +29,8 @@
     <color name="color_pinka54686">#a54686</color>
     <color name="color_blue043B83">#043B83</color>
     <color name="color_purple781082">#781082</color>
+    <color name="gray_transparent">#a6efefef</color>
+
+    <color name="red">#e94f4f</color>
+    <color name="color_login_blue">#25242F</color>
 </resources>

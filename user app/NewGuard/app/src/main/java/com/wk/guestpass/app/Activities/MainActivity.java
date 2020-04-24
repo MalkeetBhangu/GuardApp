@@ -60,6 +60,7 @@ import com.wk.guestpass.app.R;
 import com.wk.guestpass.app.Utilities.Config;
 import com.wk.guestpass.app.Utilities.RecyclerTouchListener;
 import com.wk.guestpass.app.Utilities.SessionManager;
+import com.wk.guestpass.app.messenger.ChatActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -144,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
         TextView tvHistory = findViewById(R.id.history);
         TextView tvChangePin = findViewById(R.id.tvChangePin);
         TextView tvEditProfile = findViewById(R.id.tvEditProfile);
+        TextView tvChat = findViewById(R.id.tvChat);
 
         // requestpermission();
 
@@ -272,6 +274,16 @@ public class MainActivity extends AppCompatActivity {
                 });
                 android.app.AlertDialog alertDialog = builder.create();
                 alertDialog.show();
+            }
+        });
+
+        tvChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ChatActivity.class);
+                startActivity(intent);
+                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                drawer.closeDrawer(GravityCompat.START);
             }
         });
 

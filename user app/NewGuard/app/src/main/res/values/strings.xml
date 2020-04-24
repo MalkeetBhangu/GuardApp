@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">guestpass</string>
+    <string name="app_name">QEntry User</string>
     <string name="text1">Please enter your mobile number &amp; pin</string>
     <string name="text2">If you dont have login details please click on</string>
     <string name="text3">sign up button and enroll yourself.</string>
@@ -137,4 +137,8 @@
     <string name="photo">Photo</string>
     <string name="remove_profile_photo">Remove profile photo ?</string>
     <string name="you_cannot_edit_it">You can\'t edit it.</string>
+    <string name="chat">Chat</string>
+
+    <string name="msg_select_image">Select image</string>
+    <string name="messenger">Messenger</string>
 </resources>
