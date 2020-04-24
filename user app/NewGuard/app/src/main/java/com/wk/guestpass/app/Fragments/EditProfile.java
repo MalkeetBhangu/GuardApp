@@ -18,6 +18,8 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -48,7 +50,7 @@ public class EditProfile extends Fragment {
 
     RelativeLayout rlBack, rlLogout;
     EditText edtPhoneNumber, edtUserName, edtUserEmail, edtAlternativeNumber;
-    Button btnUpdate;
+    Button btnUpdate, btnChangePin;
     CircularImageView civProfileImage;
     private static final int PICK_IMAGE_IN_GALLERY = 101;
     private static final int PICK_IMAGE_FROM_CAMERA = 111;
@@ -72,6 +74,7 @@ public class EditProfile extends Fragment {
         btnUpdate = view.findViewById(R.id.btnUpdate);
         civProfileImage = view.findViewById(R.id.circularImageView);
         ivChangeProfile = view.findViewById(R.id.ivProfile);
+        btnChangePin = view.findViewById(R.id.btnChangePin);
         return view;
     }
 
@@ -138,6 +141,16 @@ public class EditProfile extends Fragment {
             @Override
             public void onClick(View v) {
                 updateData();
+            }
+        });
+
+        btnChangePin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction().addToBackStack(null);
+                transaction.replace(R.id.homepage, new ChangePin());
+                transaction.commit();
             }
         });
     }

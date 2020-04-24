@@ -155,7 +155,7 @@
                     android:elevation="0dp"
                     android:fontFamily="@font/ubuntu"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
-                    android:text="@string/change_pin"
+                    android:text="@string/submit"
                     android:textColor="@color/color_white"
                     android:textSize="18sp" />
 

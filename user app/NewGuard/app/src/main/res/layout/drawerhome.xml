@@ -24,7 +24,7 @@
     <RelativeLayout
         android:id="@+id/itemslayout"
         android:layout_width="250dp"
-        android:background="#fff"
+        android:background="@color/white"
         android:clickable="true"
         android:layout_height="match_parent"
         android:layout_gravity="left|start">
@@ -42,12 +42,75 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <ImageView
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/circularImageView"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/ic_user" />
+
+            <TextView
+                android:id="@+id/drname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/circularImageView"
+                android:includeFontPadding="false"
+                android:fontFamily="@font/poppins"
+                android:text="@string/drtext1"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"/>
+
+            <TextView
+                android:id="@+id/flatno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:layout_toRightOf="@id/circularImageView"
+                android:layout_below="@id/drname"
+                android:fontFamily="@font/poppins_light"
+                android:textSize="13sp"
+                android:textColor="@color/color_white"
+                android:text="(FLAT NO. 0)"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"/>
+
+            <TextView
+                android:id="@+id/apartment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:layout_gravity="center"
+                android:fontFamily="@font/poppins"
+                android:textSize="13sp"
+                android:text="@string/drtext3"
+                android:textColor="@color/color_white"
+                android:layout_toRightOf="@id/circularImageView"
+                android:layout_below="@id/flatno"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="20dp"/>
+
+            <Button
+                android:id="@+id/btnViewProfile"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/apartment"
+                android:layout_toRightOf="@id/circularImageView"
+                android:text="@string/view_profile"
+                android:layout_marginLeft="20dp"
+                android:textAllCaps="false"
+                android:background="@drawable/profile_button_bg"
+                android:textColor="@color/white"
+                android:layout_marginTop="5dp"/>
+
+            <!--<ImageView
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="25dp"
                 android:layout_width="150dp"
                 android:layout_height="90dp"
-                android:src="@drawable/logo" />
+                android:src="@drawable/logo" />-->
 
 
             <RelativeLayout
@@ -56,7 +119,7 @@
                 android:layout_height="27dp"/>
 
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:layout_marginBottom="10dp"
                 android:layout_alignParentBottom="true"
                 android:orientation="vertical"
@@ -91,7 +154,8 @@
                         android:layout_gravity="center"
                         android:fontFamily="@font/poppins_light"
                         android:textSize="13sp"
-                        android:textColor="@color/color_white"/>
+                        android:textColor="@color/color_white"
+                        android:text="(FLAT NO. 6)"/>
 
                     <TextView
                         android:id="@+id/apartment"
@@ -107,7 +171,7 @@
 
                 </LinearLayout>
 
-            </LinearLayout>
+            </LinearLayout>-->
 
 
 
@@ -133,7 +197,7 @@
 
             <TextView
                 android:id="@+id/tvChat"
-                android:text="@string/chat"
+                android:text="@string/messages"
                 android:layout_marginTop="25dp"
                 android:layout_marginLeft="20dp"
                 android:drawablePadding="30dp"
@@ -143,7 +207,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/tvEditProfile"
                 android:text="@string/edit_profile"
                 android:layout_marginTop="25dp"
@@ -153,7 +217,7 @@
                 android:drawableLeft="@drawable/ic_profile"
                 android:textColor="@color/color_black221f20"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content" />-->
 
             <TextView
                 android:id="@+id/tvChangePin"

@@ -144,8 +144,9 @@ public class MainActivity extends AppCompatActivity {
         about = (TextView) findViewById(R.id.about);
         TextView tvHistory = findViewById(R.id.history);
         TextView tvChangePin = findViewById(R.id.tvChangePin);
-        TextView tvEditProfile = findViewById(R.id.tvEditProfile);
+        /*TextView tvEditProfile = findViewById(R.id.tvEditProfile);*/
         TextView tvChat = findViewById(R.id.tvChat);
+        Button btnViewProfile = findViewById(R.id.btnViewProfile);
 
         // requestpermission();
 
@@ -287,7 +288,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        tvEditProfile.setOnClickListener(new View.OnClickListener() {
+        btnViewProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 replaceFragment(new EditProfile());

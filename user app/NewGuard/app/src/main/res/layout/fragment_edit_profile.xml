@@ -72,15 +72,14 @@
         </RelativeLayout>
 
         <ScrollView
-            android:id="@+id/bottomlay"
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/homeimage"
-            android:layout_alignParentBottom="true"
             android:layout_margin="10dp">
 
 
             <LinearLayout
+                android:id="@+id/llProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/color_white"
@@ -200,9 +199,6 @@
                     android:textSize="14sp"
                     android:theme="@style/EditText.Green" />
 
-
-
-
                 <Button
                     android:id="@+id/btnUpdate"
                     android:layout_width="match_parent"
@@ -215,6 +211,21 @@
                     android:fontFamily="@font/ubuntu"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:text="@string/update"
+                    android:textColor="@color/color_white"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/btnChangePin"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="21dp"
+                    android:background="@drawable/gradd2"
+                    android:elevation="0dp"
+                    android:fontFamily="@font/ubuntu"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:text="@string/change_pin"
                     android:textColor="@color/color_white"
                     android:textSize="18sp" />
 
