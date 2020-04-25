@@ -33,4 +33,10 @@
     <color name="gray77000000">#77000000</color>
     <color name="black221f20">#221f20</color>
     <color name="green6AC259">#6AC259</color>
+
+    <color name="lightGreen31cca5">#31cca5</color>
+
+    <color name="red">#e94f4f</color>
+    <color name="gray_transparent">#a6efefef</color>
+    <color name="color_login_blue">#25242F</color>
 </resources>

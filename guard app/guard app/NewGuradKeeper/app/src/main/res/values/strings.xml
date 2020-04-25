@@ -65,4 +65,10 @@ of guest before check-in </string>
     <string name="please_enter_correct_code">Please Enter Correct Code!!</string>
     <string name="successFully_checkedIn">SuccessFully CheckedIn</string>
     <string name="you_need_to_allow_access_permission">You need to allow access to both the permissions</string>
+
+
+    <string name="users">Users</string>
+
+    <string name="msg_select_image">Select image</string>
+    <string name="messenger">Messenger</string>
 </resources>

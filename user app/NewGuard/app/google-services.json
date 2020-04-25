@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "949363377292",
+    "firebase_url": "https://qenter-user.firebaseio.com",
+    "project_id": "qenter-user",
+    "storage_bucket": "qenter-user.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:949363377292:android:5aff2a6639c73b6505a7a9",
+        "android_client_info": {
+          "package_name": "com.wk.guestpass.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "949363377292-roa66enjl3d8it1s9ssjhqvku79io548.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wk.guestpass.app",
+            "certificate_hash": "2e533975a742d189432814ae81ef17aec3260984"
+          }
+        },
+        {
+          "client_id": "949363377292-4ipsb0jgthut1fenjrqq5j0omp39u74g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8PghLSNmcjtuzzZQH484bZrBMyI_25fM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "949363377292-4ipsb0jgthut1fenjrqq5j0omp39u74g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

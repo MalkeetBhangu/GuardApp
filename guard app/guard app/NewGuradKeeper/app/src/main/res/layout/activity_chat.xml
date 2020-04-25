@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".messenger.ChatActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tbMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="5dp"
+        android:fitsSystemWindows="true"
+        android:minHeight="?attr/actionBarSize"
+        android:orientation="vertical"
+        android:theme="@style/AppTheme"
+        app:contentInsetEnd="0dp"
+        app:contentInsetStart="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivGoBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:paddingLeft="20dp"
+                android:paddingRight="5dp"
+                android:src="@drawable/back" />
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.stfalcon.chatkit.messages.MessagesList
+            android:background="@color/white"
+            android:id="@+id/messagesList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:visibility="visible"
+            app:incomingBubblePaddingBottom="8dp"
+            app:incomingBubblePaddingTop="8dp"
+            app:incomingTextSize="15sp"
+            app:incomingTimeTextSize="10sp"
+            app:outcomingBubblePaddingBottom="8dp"
+            app:outcomingBubblePaddingTop="8dp"
+            app:outcomingTextSize="16sp"
+            app:outcomingTimeTextSize="10sp"
+            app:textAutoLink="all" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#B0BCFF"/>
+
+        <com.stfalcon.chatkit.messages.MessageInput
+            android:visibility="visible"
+            android:id="@+id/input"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:inputHint="Type a message..."
+            app:attachmentButtonBackground="@android:color/transparent"
+            app:attachmentButtonIcon="@drawable/more"
+            app:inputButtonBackground="@android:color/transparent"
+            app:inputButtonIcon="@drawable/send"
+            android:background="@color/white"
+            app:inputButtonWidth="50dp"
+            app:inputButtonHeight="39dp"
+            app:attachmentButtonWidth="50dp"
+            app:attachmentButtonHeight="39dp"
+            app:showAttachmentButton="true" />
+
+
+        <include
+            layout="@layout/items_options" />
+    </LinearLayout>
+
+</LinearLayout>

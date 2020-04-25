@@ -68,7 +68,7 @@ public class UserMessengerFragment extends Fragment {
         mDatabaseReference.keepSynced(true);
         mUserReference = FirebaseDatabase.getInstance().getReference().child(AppConstants.NODE_USERS);
         mUserReference.keepSynced(true);
-        currentFirebaseId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//        currentFirebaseId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         parentActivity = getActivity();
 //        currentFirebaseId ="XYZ123";
         listDialog = new ArrayList<DefaultDialog>();

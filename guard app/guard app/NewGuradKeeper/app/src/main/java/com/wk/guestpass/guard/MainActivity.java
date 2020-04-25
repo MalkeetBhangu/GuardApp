@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -18,7 +19,11 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetDialog;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -45,6 +50,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.crashlytics.android.Crashlytics;
 import com.mikhaellopez.circularimageview.CircularImageView;
+import com.wk.guestpass.guard.fragments.UserList;
 
 import io.fabric.sdk.android.Fabric;
 import org.json.JSONException;
@@ -60,6 +66,7 @@ import java.util.HashMap;
 import java.util.Map;
 import id.zelory.compressor.Compressor;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+import static android.Manifest.permission.CALL_PHONE;
 import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
@@ -101,15 +108,31 @@ public class MainActivity extends AppCompatActivity {
         guardname = findViewById(R.id.guardname);
         apart = findViewById(R.id.aprtname);
         ttlvisit = findViewById(R.id.tgcount);
-        requestPermission();
+        FloatingActionButton btnBottom = findViewById(R.id.btnBottom);
+        /*requestPermission();*/
         HashMap<String, String> users = session.getUserDetails();
         usersssid = users.get(SessionManager.KEY_ID);
+
+
+        btnBottom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction().addToBackStack(null);
+                transaction.replace(R.id.homePage, new UserList());
+                transaction.commit();
+            }
+        });
 
         scanqr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), QRActivity.class);
-                startActivityForResult(intent, 101);
+                if (checkPermission()) {
+                    Intent intent = new Intent(getApplicationContext(), QRActivity.class);
+                    startActivityForResult(intent, 101);
+                }else {
+                    requestPermission();
+                }
             }
         });
         entermanually.setOnClickListener(new View.OnClickListener() {
@@ -184,6 +207,15 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    private boolean checkPermission() {
+        int result = ContextCompat.checkSelfPermission(getApplicationContext(), CAMERA);
+        int result1 = ContextCompat.checkSelfPermission(getApplicationContext(), WRITE_EXTERNAL_STORAGE);
+        int result3 = ContextCompat.checkSelfPermission(getApplicationContext(), READ_EXTERNAL_STORAGE);
+
+        return result == PackageManager.PERMISSION_GRANTED && result1 == PackageManager.PERMISSION_GRANTED
+                && result3 == PackageManager.PERMISSION_GRANTED;
+    }
+
     private void requestPermission() {
         ActivityCompat.requestPermissions(this, new String[]
                 {CAMERA, WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
@@ -196,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
                 if (grantResults.length > 0) {
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        if (shouldShowRequestPermissionRationale(ACCESS_FINE_LOCATION)) {
+                        if (shouldShowRequestPermissionRationale(CAMERA)) {
                             showMessageOKCancel(getResources().getString(R.string.you_need_to_allow_access_permission),
                                     new DialogInterface.OnClickListener() {
                                         @Override
@@ -208,6 +240,9 @@ public class MainActivity extends AppCompatActivity {
                                         }
                                     });
                             return;
+                        }else {
+                            Intent intent = new Intent(getApplicationContext(), QRActivity.class);
+                            startActivityForResult(intent, 101);
                         }
                     }
 

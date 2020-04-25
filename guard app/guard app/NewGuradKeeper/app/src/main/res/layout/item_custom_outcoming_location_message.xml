@@ -1,0 +1,25 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginTop="8dp">
+
+    <ImageView
+        android:layout_alignParentEnd="true"
+        android:id="@+id/ivLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/location"/>
+    <TextView
+        android:gravity="right"
+        android:text="215"
+        android:id="@+id/tvTime"
+        android:layout_alignBottom="@+id/ivLocation"
+        android:layout_toStartOf="@id/ivLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"/>
+
+</RelativeLayout>

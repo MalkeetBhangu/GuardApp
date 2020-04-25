@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="0dp"
+        android:background="@color/white"
+        android:layout_marginTop="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp">
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/circularImageView"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_user"
+                android:layout_marginLeft="5dp"/>
+
+            <TextView
+                android:id="@+id/tvUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/circularImageView"
+                android:text="sfdfs"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_centerVertical="true"/>
+
+            <!--<TextView
+                android:id="@+id/tvLastMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/ivUser"
+                android:text="sfdfs"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_below="@id/tvUserName"/>-->
+            
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

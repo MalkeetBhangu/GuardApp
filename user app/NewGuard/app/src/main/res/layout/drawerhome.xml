@@ -52,8 +52,8 @@
 
             <TextView
                 android:id="@+id/drname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
                 android:layout_toRightOf="@id/circularImageView"
                 android:includeFontPadding="false"
                 android:fontFamily="@font/poppins"
@@ -65,8 +65,8 @@
 
             <TextView
                 android:id="@+id/flatno"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
                 android:includeFontPadding="false"
                 android:layout_toRightOf="@id/circularImageView"
                 android:layout_below="@id/drname"
@@ -79,8 +79,8 @@
 
             <TextView
                 android:id="@+id/apartment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
                 android:includeFontPadding="false"
                 android:layout_gravity="center"
                 android:fontFamily="@font/poppins"
@@ -196,7 +196,7 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:id="@+id/tvChat"
+                android:id="@+id/tvMessages"
                 android:text="@string/messages"
                 android:layout_marginTop="25dp"
                 android:layout_marginLeft="20dp"

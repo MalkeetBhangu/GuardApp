@@ -35,5 +35,21 @@
         <item name="colorControlNormal">@color/green_400</item>
     </style>
 
+    <style name="Searchview" parent="Widget.AppCompat.SearchView">
+        <!-- Gets rid of the "underline" in the text -->
+        <item name="queryBackground">@color/colorPrimaryDark</item>
+        <item name="searchIcon">@drawable/ic_search</item>
+        <!-- The hint text that appears when the user has not typed anything -->
+    </style>
+
+
+
+
+
+    <style name="ImagePickerTheme" parent="ef_BaseTheme">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 
 </resources>

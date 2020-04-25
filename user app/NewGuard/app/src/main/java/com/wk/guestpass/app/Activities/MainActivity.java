@@ -48,6 +48,17 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.crashlytics.android.Crashlytics;
 import com.github.ybq.android.spinkit.style.CubeGrid;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.wk.guestpass.app.Adpaters.HomeListAdapter;
 import com.wk.guestpass.app.Fragments.AddGuest;
 import com.wk.guestpass.app.Fragments.ChangePin;
@@ -74,6 +85,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+
+import javax.annotation.Nullable;
 
 import io.fabric.sdk.android.Fabric;
 
@@ -106,13 +119,15 @@ public class MainActivity extends AppCompatActivity {
     public CubeGrid cubeGrid;
     SwipeRefreshLayout mSwipeRefreshLayout;
     RelativeLayout addguest, todaysguest, ucguest;
-    Fragment fragment ;
+    Fragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.drawerhome);
+
+        getFirebaseValue();
 
         toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -145,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
         TextView tvHistory = findViewById(R.id.history);
         TextView tvChangePin = findViewById(R.id.tvChangePin);
         /*TextView tvEditProfile = findViewById(R.id.tvEditProfile);*/
-        TextView tvChat = findViewById(R.id.tvChat);
+        TextView tvMessages = findViewById(R.id.tvMessages);
         Button btnViewProfile = findViewById(R.id.btnViewProfile);
 
         // requestpermission();
@@ -278,7 +293,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        tvChat.setOnClickListener(new View.OnClickListener() {
+        tvMessages.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ChatActivity.class);
@@ -696,7 +711,7 @@ public class MainActivity extends AppCompatActivity {
 
             case 1111:
                 Fragment frag = getSupportFragmentManager().findFragmentById(R.id.homepage);
-                frag.onRequestPermissionsResult(requestCode,permissions,grantResults);
+                frag.onRequestPermissionsResult(requestCode, permissions, grantResults);
                 break;
         }
     }
@@ -729,4 +744,23 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }*/
+
+    private void getFirebaseValue() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("QEnteryUser").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                for (DocumentChange documentChange : queryDocumentSnapshots.getDocumentChanges()) {
+                    Boolean value = (Boolean) documentChange.getDocument().getData().get("keyField");
+
+                    if (!value) {
+                        finish();
+                    }
+
+                }
+            }
+        });
+
+    }
 }
