@@ -19,9 +19,9 @@
 
         <ImageButton
             android:id="@+id/text_img_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/select_message" />
+            android:layout_width="50dp"
+            android:layout_height="43dp"
+            android:background="@drawable/ic_chat_green_24dp" />
 
     </LinearLayout>
 
@@ -42,9 +42,9 @@
 
         <ImageButton
             android:id="@+id/gallery_img_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/select_photo" />
+            android:layout_width="50dp"
+            android:layout_height="43dp"
+            android:background="@drawable/ic_photo_green_24dp" />
 
     </LinearLayout>
 
@@ -64,9 +64,9 @@
 
         <ImageButton
             android:id="@+id/camera_img_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/select_camera" />
+            android:layout_width="50dp"
+            android:layout_height="43dp"
+            android:background="@drawable/ic_photo_camera_green_24dp" />
 
 
     </LinearLayout>
@@ -87,9 +87,9 @@
 
         <ImageButton
             android:id="@+id/location_img_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/select_location" />
+            android:layout_width="50dp"
+            android:layout_height="43dp"
+            android:background="@drawable/ic_location_on_green_24dp" />
 
 
     </LinearLayout>

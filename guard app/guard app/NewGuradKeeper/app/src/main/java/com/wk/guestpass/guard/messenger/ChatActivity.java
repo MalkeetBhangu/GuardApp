@@ -78,11 +78,18 @@ public class ChatActivity extends AppCompatActivity {
     MessagesList messagesList;
     LinearLayout llItems;
     ImageButton text_img_btn, gallery_img_btn, camera_img_btn, location_img_btn;
+    String receivingString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            receivingString = extras.getString("userName");
+        }
 
 
         if (getIntent() != null) {
@@ -678,7 +685,7 @@ currentFirebaseId = "dfg123";
 
     private void loadMessages() {
 
-        tvName.setText("Guard Name");
+        tvName.setText(receivingString);
 
 
         MessagesTwo messageSend = new MessagesTwo();

@@ -1,6 +1,7 @@
 package com.wk.guestpass.guard.fragments;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -21,6 +22,7 @@ import com.wk.guestpass.guard.R;
 import com.wk.guestpass.guard.RecyclerTouchListener;
 import com.wk.guestpass.guard.SessionManager;
 import com.wk.guestpass.guard.adapter.UserListAdapter;
+import com.wk.guestpass.guard.messenger.ChatActivity;
 import com.wk.guestpass.guard.models.UserListModel;
 
 import java.util.ArrayList;
@@ -117,6 +119,12 @@ public class UserList extends Fragment {
                 usersRecyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
+               UserListModel userListModel = arrayListUserListModel.get(position);
+               String userName = userListModel.getUserName();
+
+                Intent intent = new Intent(getActivity(), ChatActivity.class);
+                intent.putExtra("userName", userName);
+                startActivity(intent);
 
             }
 
@@ -129,4 +137,6 @@ public class UserList extends Fragment {
         userListAdapter = new UserListAdapter(getActivity(),arrayListUserListModel);
         usersRecyclerView.setAdapter(userListAdapter);
     }
+
+
 }
