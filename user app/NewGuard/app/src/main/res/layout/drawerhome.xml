@@ -219,7 +219,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />-->
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/tvChangePin"
                 android:text="@string/change_pin"
                 android:layout_marginTop="25dp"
@@ -229,7 +229,7 @@
                 android:drawableLeft="@drawable/ic_lock_open_24dp"
                 android:textColor="@color/color_black221f20"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content" />-->
 
             <TextView
                 android:id="@+id/help"

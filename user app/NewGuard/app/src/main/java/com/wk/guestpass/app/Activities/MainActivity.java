@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
         help = (TextView) findViewById(R.id.help);
         about = (TextView) findViewById(R.id.about);
         TextView tvHistory = findViewById(R.id.history);
-        TextView tvChangePin = findViewById(R.id.tvChangePin);
+        /*TextView tvChangePin = findViewById(R.id.tvChangePin);*/
         /*TextView tvEditProfile = findViewById(R.id.tvEditProfile);*/
         TextView tvMessages = findViewById(R.id.tvMessages);
         Button btnViewProfile = findViewById(R.id.btnViewProfile);
@@ -312,14 +312,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        tvChangePin.setOnClickListener(new View.OnClickListener() {
+        /*tvChangePin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 replaceFragment(new ChangePin());
                 DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
                 drawer.closeDrawer(GravityCompat.START);
             }
-        });
+        });*/
 
         tvHistory.setOnClickListener(new View.OnClickListener() {
             @Override
